@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<! -- header.html -->
+<meta charset="utf-8">
+<title>Cutting Simple Assets From Photoshop</title>
+
+<meta name="author" content="Aaron Nordyke">
+
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+ <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le styles -->
+<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+
+<!-- Le fav and touch icons -->
+<!-- Update these with your own images
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+-->
+
+ <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
+
+<! -- header.html end -->
+
+
+   <body>
+   		<nav class="navbar navbar-default visible-xs" role="navigation">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header">
+		    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			  <span class="sr-only">Toggle navigation</span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			</button>
+			
+			<a type="button" class="navbar-toggle nav-link" href="http://github.com/nordyke">
+		      <i class="fa fa-github"></i>
+		    </a>
+		    
+		    
+		    <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/nordyke">
+		      <i class="fa fa-twitter"></i>
+		    </a>
+		    
+		    
+		    <a type="button" class="navbar-toggle nav-link" href="mailto:aaron.nordyke@gmail.com">
+		      <i class="fa fa-envelope"></i>
+		    </a>
+		    
+			<a class="navbar-brand" href="/">
+				<img src="http://www.gravatar.com/avatar/8e2cc430d7ee2ec79255554d73150f3e?s=35" class="img-circle" />
+				Aaron Nordyke
+			</a>
+		  </div>
+
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+			  <li class="active"><a href="/">Home</a></li>
+			  <li><a href="/categories.html">Categories</a></li>
+  			  <li><a href="/tags.html">Tags</a></li>
+			</ul>
+		  </div><!-- /.navbar-collapse -->
+		</nav>
+
+       <!-- nav-menu-dropdown -->
+       <div class="btn-group hidden-xs" id="nav-menu">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
+            <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+              <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
+          </ul>
+       </div>
+
+		<div class="col-sm-3 sidebar hidden-xs">
+			<! -- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/8e2cc430d7ee2ec79255554d73150f3e?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">Aaron Nordyke</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Aaron is a Web Developer at VML, a Kansas City digital agency
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/nordyke">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/nordyke">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="mailto:aaron.nordyke@gmail.com">
+				<i class="fa fa-envelope fa-lg"></i>
+			</a>
+		</li>
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/anordyke">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+
+	
+
+<! -- sidebar.html end -->
+
+		</div>
+
+		<div class="col-sm-9 col-sm-offset-3">
+			<article>
+	<div class="page-header">
+	  <h1>Cutting Simple Assets From Photoshop </h1>
+	</div>
+
+	<div class="col-sm-10">
+	 <span class="post-date">
+	   
+	   January 
+	   21st,
+	     
+	   2014
+	 </span>
+	  <div class="article_body">
+	  <p>This is a quick way to cut assets out of a PSD when you don’t need to slice specific sections of an image contained in a layer. Once you’re comfortable with the process and the keyboard shortcuts, you’ll be able to cut out an asset in less than a minute.</p>
+
+<p>The basic process is:</p>
+
+<ol>
+<li>Select layers</li>
+
+<li>Duplicate layers into a new document</li>
+
+<li>Trim away the extra canvas area</li>
+
+<li>Save the image</li>
+</ol>
+
+<h2 id="select_layers">Select Layers</h2>
+
+<p>First, you will need to find the layers that make up your needed image. It might be only one layer, or it could be 20. The process will be the same.</p>
+
+<p><strong>Tip</strong>: Turn on <strong>Auto-Select</strong> in Photoshop, so that when you click on an image, the layer is automatically selected in your <strong>Layers</strong> pallette. This is a lot faster than drilling down into the <strong>Layers</strong> heirarchy created by the designer.</p>
+
+<p><img src="/assets/img/cutting-assets/auto-select.png" alt="Auto Select" /></p>
+
+<p>You’ll have to manually identity which layers make up the aggregate image. Then, highlight all layers that make up your image (<strong>⌘+Click</strong>) in the <strong>Layers</strong> palette.</p>
+
+<p><img src="/assets/img/cutting-assets/highlight-layers.png" alt="Highlight layers" /></p>
+
+<h2 id="duplicate_layers_into_a_new_document">Duplicate Layers Into a New Document</h2>
+
+<p>Once you have all your layers selected, you will duplicate the layers into a new document.</p>
+
+<p><img src="/assets/img/cutting-assets/layers-menu.png" alt="Layers Menu" /></p>
+
+<ol>
+<li><strong>Layers Palette Menu -&gt; Duplicate Layer…</strong></li>
+
+<li>Choose <strong>Document: New</strong></li>
+
+<li>Click <strong>OK</strong></li>
+</ol>
+
+<p><img src="/assets/img/cutting-assets/duplicate.png" alt="Duplicate Layers" /></p>
+
+<h2 id="trim_away_the_extra_canvas_area">Trim Away The Extra Canvas Area</h2>
+
+<p>All the layers have now been duplicated into a new document, but the size the canvas is the same as the old document. To fix this, trim away the excess area.</p>
+
+<ol>
+<li>In the main menu bar, choose <strong>Image -&gt; Trim…</strong></li>
+
+<li>Choose one of the options in <strong>Based On</strong>. <strong>Top Left Pixel Color</strong> is sufficient most of the time.</li>
+
+<li>The canvas size should be trimmed down to only the layers making up the image.</li>
+</ol>
+
+<p>If too much has been trimmed away, undo (<strong>⌥⌘Z</strong>) and Trim again with a different choice in the <strong>Based On</strong> section. If not enough has been trimmed, do an additional Trim with a different choice.</p>
+
+<h2 id="save_the_image">Save The Image</h2>
+
+<p>Once you’re happy with your choice, it’s time to save the image.</p>
+
+<ol>
+<li><strong>File -&gt; Save For Web</strong> <strong>(⌥⇧⌘S)</strong>.</li>
+
+<li>Choose image type (.png, .jpg, etc).</li>
+
+<li>Use <strong>Quality: Bicubic Sharper</strong> if shrinking the image from a higher resolution.</li>
+
+<li>Click <strong>Save…</strong></li>
+</ol>
+
+<h2 id="summary">Summary</h2>
+
+<p>This is a simple way to cut out assets when you don’t need to slice up images within a layer. Photoshop is a complicated program with lots of ways to do the same thing – but as front-end developers, we only need to know a snippet of the tool to get what we need from a PSD. I hope this helps get you get what you need faster.</p>
+
+<p>Big thanks to <a href="https://twitter.com/Bishop81">Chris Morris</a> for teaching me this slick method.</p>
+	  </div>
+
+		
+		<ul class="tag_box list-unstyled list-inline">
+		  <li><i class="fa fa-folder-open"></i></li>
+		  
+		  
+			 
+				<li><a href="/categories.html#development-ref">
+					development <span>(1)</span>
+					
+				</a></li>
+			
+		  
+		</ul>
+		  
+
+		
+		<ul class="list-inline">
+		  <li><i class="fa fa-tags"></i></li>
+		  
+		  
+			 
+				<li>
+					<a href="/tags.html#photoshop-ref">
+					photoshop <span>(1)</span>
+					,
+					</a>
+				</li>
+			 
+				<li>
+					<a href="/tags.html#development-ref">
+					development <span>(1)</span>
+					
+					</a>
+				</li>
+			
+		  
+		  
+		</ul>
+		  
+
+		<hr>
+
+		<ul class="pager">
+		  
+		  <li class="previous disabled"><a>&larr; Previous</a></li>
+		  
+		  
+		  <li class="next"><a href="//angularjs/javascript/2014/01/22/angular-organization.html" title="Angular Project Organization, As Used By Google Teams">Next &rarr;</a></li>
+		  
+		</ul>
+
+		<hr>
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+			<!-- footer.html -->
+<footer>
+ <hr/>
+ <p>
+ 	&copy; 2014 Aaron Nordyke with Jekyll. Theme: <a href="https://github.com/dbtek/dbyll">dbyll</a> by dbtek.
+ </p>
+</footer>
+
+<!-- footer.html end -->
+
+
+		</div>
+
+    
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
+   </body>
+
+</html>
+
+

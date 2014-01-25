@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Aaron Nordyke</title>
+		<description>Development Blog of Aaron Nordyke</description>
+		<link>/</link>
+		<atom:link href="/" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Angular Project Organization, As Used By Google Teams</title>
+				<description>&lt;p&gt;Organizing a project’s files falls under two general schools of thought.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Object Type (aka “The sock drawer”)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The methodology is nicknamed the “The sock drawer”, because it resembles how most people would organize their dresser drawers – by clothing type.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Module&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If a person organized their dresser by outfit, they would be following a modular approach. The major benefits to this approach are that related files are near each other, and you can get a sense of what a project does just by looking at the file structure.&lt;/p&gt;
+
+&lt;h2 id=&quot;googles_hybrid&quot;&gt;Google’s Hybrid&lt;/h2&gt;
+
+&lt;p&gt;Google’s internal Angular projects delineate two different categories of files, and the organization is different for each.&lt;/p&gt;
+
+&lt;h3 id=&quot;1_potentially_reusable_components&quot;&gt;1. (Potentially) Reusable Components&lt;/h3&gt;
+
+&lt;p&gt;There are certain Angular classes that are good candidates be reused, both within the project and potentially in others. These include:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Filters (used to format data, filter collections, etc)&lt;/li&gt;
+
+&lt;li&gt;Directives (reusable DOM components and behavior)&lt;/li&gt;
+
+&lt;li&gt;Constants&lt;/li&gt;
+
+&lt;li&gt;Services (singletons containing things like ajax services)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Each of these is organized within their respective file-type folders (sock drawers).&lt;/p&gt;
+
+&lt;h3 id=&quot;2_project_modules&quot;&gt;2. Project Modules&lt;/h3&gt;
+
+&lt;p&gt;Organizing by modules allows related files to be placed near each other, regardless of file type. Combinations of views and their corresponding controllers are stored in each module folder.&lt;/p&gt;
+
+&lt;h3 id=&quot;example_structure_using_the_hybrid_approach&quot;&gt;Example Structure Using The Hybrid Approach&lt;/h3&gt;
+
+&lt;p&gt;This is a very simple example to illustrate the hybrid approach.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// Reusable components (potentially across projects!)
+- Reusable (name it whatever you&amp;#39;d like)
+	- Filters
+		- CurrencyFilters.js
+		- CollectionFilters.js
+		- DateFilter.js
+	- Directives
+		- CalendarDirective.js
+		- SearchBarDirective.js
+		- SliderDirective.js
+	- Constants
+		- Constants.js
+	- Services
+		- User.js
+		- Transactions.js
+// Project Modules (most likely not useable across projects)
+- Modules
+	- Header
+		- HeaderController.js
+		- header.html
+	- Transactions
+		- TransactionController.js
+		- transactions.html
+	- ViewProfile
+		- ViewProfileController.js
+		- viewProfile.html
+	- EditProfile
+		- EditProfileController.js
+		- editProfile.html&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;I think this is a compelling way to organize the codebase, regardless of the project’s dominant framework.&lt;/p&gt;
+
+&lt;h2 id=&quot;further_study&quot;&gt;Further Study&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.confreaks.com/videos/759-rubymidwest2011-keynote-architecture-the-lost-years&quot;&gt;Architecture, The Lost Years&lt;/a&gt; – Uncle Bob Martin&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript&quot;&gt;Code Organization In Large AngularJS and JavaScript Applications&lt;/a&gt; – Cliff Meyers&lt;/p&gt;</description>
+				<pubDate>Wed, 22 Jan 2014 00:00:00 -0600</pubDate>
+				<link>/angularjs/javascript/2014/01/22/angular-organization.html</link>
+				<guid isPermaLink="true">/angularjs/javascript/2014/01/22/angular-organization.html</guid>
+			</item>
+		
+			<item>
+				<title>Cutting Simple Assets From Photoshop</title>
+				<description>&lt;p&gt;This is a quick way to cut assets out of a PSD when you don’t need to slice specific sections of an image contained in a layer. Once you’re comfortable with the process and the keyboard shortcuts, you’ll be able to cut out an asset in less than a minute.&lt;/p&gt;
+
+&lt;p&gt;The basic process is:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Select layers&lt;/li&gt;
+
+&lt;li&gt;Duplicate layers into a new document&lt;/li&gt;
+
+&lt;li&gt;Trim away the extra canvas area&lt;/li&gt;
+
+&lt;li&gt;Save the image&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;select_layers&quot;&gt;Select Layers&lt;/h2&gt;
+
+&lt;p&gt;First, you will need to find the layers that make up your needed image. It might be only one layer, or it could be 20. The process will be the same.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip&lt;/strong&gt;: Turn on &lt;strong&gt;Auto-Select&lt;/strong&gt; in Photoshop, so that when you click on an image, the layer is automatically selected in your &lt;strong&gt;Layers&lt;/strong&gt; pallette. This is a lot faster than drilling down into the &lt;strong&gt;Layers&lt;/strong&gt; heirarchy created by the designer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/auto-select.png&quot; alt=&quot;Auto Select&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll have to manually identity which layers make up the aggregate image. Then, highlight all layers that make up your image (&lt;strong&gt;⌘+Click&lt;/strong&gt;) in the &lt;strong&gt;Layers&lt;/strong&gt; palette.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/highlight-layers.png&quot; alt=&quot;Highlight layers&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;duplicate_layers_into_a_new_document&quot;&gt;Duplicate Layers Into a New Document&lt;/h2&gt;
+
+&lt;p&gt;Once you have all your layers selected, you will duplicate the layers into a new document.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/layers-menu.png&quot; alt=&quot;Layers Menu&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Layers Palette Menu -&amp;gt; Duplicate Layer…&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Choose &lt;strong&gt;Document: New&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Click &lt;strong&gt;OK&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/duplicate.png&quot; alt=&quot;Duplicate Layers&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;trim_away_the_extra_canvas_area&quot;&gt;Trim Away The Extra Canvas Area&lt;/h2&gt;
+
+&lt;p&gt;All the layers have now been duplicated into a new document, but the size the canvas is the same as the old document. To fix this, trim away the excess area.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In the main menu bar, choose &lt;strong&gt;Image -&amp;gt; Trim…&lt;/strong&gt;&lt;/li&gt;
+
+&lt;li&gt;Choose one of the options in &lt;strong&gt;Based On&lt;/strong&gt;. &lt;strong&gt;Top Left Pixel Color&lt;/strong&gt; is sufficient most of the time.&lt;/li&gt;
+
+&lt;li&gt;The canvas size should be trimmed down to only the layers making up the image.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If too much has been trimmed away, undo (&lt;strong&gt;⌥⌘Z&lt;/strong&gt;) and Trim again with a different choice in the &lt;strong&gt;Based On&lt;/strong&gt; section. If not enough has been trimmed, do an additional Trim with a different choice.&lt;/p&gt;
+
+&lt;h2 id=&quot;save_the_image&quot;&gt;Save The Image&lt;/h2&gt;
+
+&lt;p&gt;Once you’re happy with your choice, it’s time to save the image.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;File -&amp;gt; Save For Web&lt;/strong&gt; &lt;strong&gt;(⌥⇧⌘S)&lt;/strong&gt;.&lt;/li&gt;
+
+&lt;li&gt;Choose image type (.png, .jpg, etc).&lt;/li&gt;
+
+&lt;li&gt;Use &lt;strong&gt;Quality: Bicubic Sharper&lt;/strong&gt; if shrinking the image from a higher resolution.&lt;/li&gt;
+
+&lt;li&gt;Click &lt;strong&gt;Save…&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is a simple way to cut out assets when you don’t need to slice up images within a layer. Photoshop is a complicated program with lots of ways to do the same thing – but as front-end developers, we only need to know a snippet of the tool to get what we need from a PSD. I hope this helps get you get what you need faster.&lt;/p&gt;
+
+&lt;p&gt;Big thanks to &lt;a href=&quot;https://twitter.com/Bishop81&quot;&gt;Chris Morris&lt;/a&gt; for teaching me this slick method.&lt;/p&gt;</description>
+				<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate>
+				<link>/development/2014/01/21/cutting-assets.html</link>
+				<guid isPermaLink="true">/development/2014/01/21/cutting-assets.html</guid>
+			</item>
+		
+	</channel>
+</rss>
