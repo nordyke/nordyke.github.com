@@ -47,34 +47,34 @@
 &lt;p&gt;This is a very simple example to illustrate the hybrid approach.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;// Reusable components (potentially across projects!)
-- Reusable (name it whatever you&amp;#39;d like)
-	- Filters
-		- CurrencyFilters.js
-		- CollectionFilters.js
-		- DateFilter.js
-	- Directives
-		- CalendarDirective.js
-		- SearchBarDirective.js
-		- SliderDirective.js
-	- Constants
-		- Constants.js
-	- Services
-		- User.js
-		- Transactions.js
+Reusable/ (name it whatever you&amp;#39;d like)
+	Filters/
+		CurrencyFilters.js
+		CollectionFilters.js
+		DateFilter.js
+	Directives/
+		CalendarDirective.js
+		SearchBarDirective.js
+		SliderDirective.js
+	Constants/
+		Constants.js
+	Services/
+		User.js
+		Transactions.js
 // Project Modules (most likely not useable across projects)
-- Modules
-	- Header
-		- HeaderController.js
-		- header.html
-	- Transactions
-		- TransactionController.js
-		- transactions.html
-	- ViewProfile
-		- ViewProfileController.js
-		- viewProfile.html
-	- EditProfile
-		- EditProfileController.js
-		- editProfile.html&lt;/code&gt;&lt;/pre&gt;
+Modules/
+	Header/
+		HeaderController.js
+		header.html
+	Transactions/
+		TransactionController.js
+		transactions.html
+	ViewProfile/
+		ViewProfileController.js
+		viewProfile.html
+	EditProfile/
+		EditProfileController.js
+		editProfile.html&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 

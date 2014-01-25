@@ -40,34 +40,34 @@ Organizing by modules allows related files to be placed near each other, regardl
 This is a very simple example to illustrate the hybrid approach.
 
 	// Reusable components (potentially across projects!)
-	- Reusable (name it whatever you'd like)
-		- Filters
-			- CurrencyFilters.js
-			- CollectionFilters.js
-			- DateFilter.js
-		- Directives
-			- CalendarDirective.js
-			- SearchBarDirective.js
-			- SliderDirective.js
-		- Constants
-			- Constants.js
-		- Services
-			- User.js
-			- Transactions.js
+	Reusable/ (name it whatever you'd like)
+		Filters/
+			CurrencyFilters.js
+			CollectionFilters.js
+			DateFilter.js
+		Directives/
+			CalendarDirective.js
+			SearchBarDirective.js
+			SliderDirective.js
+		Constants/
+			Constants.js
+		Services/
+			User.js
+			Transactions.js
 	// Project Modules (most likely not useable across projects)
-	- Modules
-		- Header
-			- HeaderController.js
-			- header.html
-		- Transactions
-			- TransactionController.js
-			- transactions.html
-		- ViewProfile
-			- ViewProfileController.js
-			- viewProfile.html
-		- EditProfile
-			- EditProfileController.js
-			- editProfile.html
+	Modules/
+		Header/
+			HeaderController.js
+			header.html
+		Transactions/
+			TransactionController.js
+			transactions.html
+		ViewProfile/
+			ViewProfileController.js
+			viewProfile.html
+		EditProfile/
+			EditProfileController.js
+			editProfile.html
 
 
 ## Summary ##
