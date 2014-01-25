@@ -16,7 +16,7 @@ author:
   bio: Aaron is a Web Developer at VML, a Kansas City digital agency
   email_md5: 8e2cc430d7ee2ec79255554d73150f3e
 
-#rss_path: feed.xml
+rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
 
