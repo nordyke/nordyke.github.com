@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Cutting Simple Assets From Photoshop</title>
+<title>Base z-index -- SASS to the Rescue</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -156,93 +156,41 @@
 		<div class="col-sm-9 col-sm-offset-3">
 			<article>
 	<div class="page-header">
-	  <h1>Cutting Simple Assets From Photoshop </h1>
+	  <h1>Base z-index -- SASS to the Rescue </h1>
 	</div>
 
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
 	   January 
-	   21st,
-	     
-	   2014
+	   9th,
+	   
+	   2013
 	 </span>
 	  <div class="article_body">
-	  <p>This is a quick way to cut assets out of a PSD when you don’t need to slice specific sections of an image contained in a layer. Once you’re comfortable with the process and the keyboard shortcuts, you’ll be able to cut out an asset in less than a minute.</p>
+	  <p>I’m developing an application for a client in the form of overlays on top of their existing content. Today, I was informed that our z-indexes are all too low. The client’s site has elements that can go all the way up to 3000, and our elements were definitely below that. They recommended we use a minimum of 4000 to be safe.</p>
 
-<p>The basic process is:</p>
+<p>The most straightforward solution would be to find every z-index and add 4000 to it.</p>
 
-<ol>
-<li>Select layers</li>
+<pre><code>.element { z-index: 50 }</code></pre>
 
-<li>Duplicate layers into a new document</li>
+<p>becomes</p>
 
-<li>Trim away the extra canvas area</li>
+<pre><code>.element { z-index: 4050 }</code></pre>
 
-<li>Save the image</li>
-</ol>
+<p>But what happens if we we get a new requirement that our minimum should be 5000? Do you really want to have to find all the z-indexes again? With SASS, this is a non-issue.</p>
 
-<h2 id="select_layers">Select Layers</h2>
+<p>First, I created a new SASS variable to note my base z-index.</p>
 
-<p>First, you will need to find the layers that make up your needed image. It might be only one layer, or it could be 20. The process will be the same.</p>
+<pre><code>$base-z-index: 4000;</code></pre>
 
-<p><strong>Tip</strong>: Turn on <strong>Auto-Select</strong> in Photoshop, so that when you click on an image, the layer is automatically selected in your <strong>Layers</strong> palette. This is a lot faster than drilling down into the <strong>Layers</strong> hierarchy created by the designer.</p>
+<p>Next, I added the variable to every z-index instance.</p>
 
-<p><img src="/assets/img/cutting-assets/auto-select.png" alt="Auto Select" /></p>
+<pre><code>.element { z-index: $base-z-index + 50; }</code></pre>
 
-<p>You’ll have to manually identity which layers make up the aggregate image. Then, highlight all layers that make up your image (<strong>⌘+Click</strong>) in the <strong>Layers</strong> palette.</p>
+<p>This also takes advantage of SASS’ built-in math operations.</p>
 
-<p><img src="/assets/img/cutting-assets/highlight-layers.png" alt="Highlight layers" /></p>
-
-<h2 id="duplicate_layers_into_a_new_document">Duplicate Layers Into a New Document</h2>
-
-<p>Once you have all your layers selected, you will duplicate the layers into a new document.</p>
-
-<p><img src="/assets/img/cutting-assets/layers-menu.png" alt="Layers Menu" /></p>
-
-<ol>
-<li><strong>Layers Palette Menu -&gt; Duplicate Layer…</strong></li>
-
-<li>Choose <strong>Document: New</strong></li>
-
-<li>Click <strong>OK</strong></li>
-</ol>
-
-<p><img src="/assets/img/cutting-assets/duplicate.png" alt="Duplicate Layers" /></p>
-
-<h2 id="trim_away_the_extra_canvas_area">Trim Away The Extra Canvas Area</h2>
-
-<p>All the layers have now been duplicated into a new document, but the size the canvas is the same as the old document. To fix this, trim away the excess area.</p>
-
-<ol>
-<li>In the main menu bar, choose <strong>Image -&gt; Trim…</strong></li>
-
-<li>Choose one of the options in <strong>Based On</strong>. <strong>Top Left Pixel Color</strong> is sufficient most of the time.</li>
-
-<li>The canvas size should be trimmed down to only the layers making up the image.</li>
-</ol>
-
-<p>If too much has been trimmed away, undo (<strong>⌥⌘Z</strong>) and Trim again with a different choice in the <strong>Based On</strong> section. If not enough has been trimmed, do an additional Trim with a different choice.</p>
-
-<h2 id="save_the_image">Save The Image</h2>
-
-<p>Once you’re happy with your choice, it’s time to save the image.</p>
-
-<ol>
-<li><strong>File -&gt; Save For Web</strong> <strong>(⌥⇧⌘S)</strong>.</li>
-
-<li>Choose image type (.png, .jpg, etc).</li>
-
-<li>Use <strong>Quality: Bicubic Sharper</strong> if shrinking the image from a higher resolution.</li>
-
-<li>Click <strong>Save…</strong></li>
-</ol>
-
-<h2 id="summary">Summary</h2>
-
-<p>This is a simple way to cut out assets when you don’t need to slice up images within a layer. Photoshop is a complicated program with lots of ways to do the same thing – but as front-end developers, we only need to know a snippet of the tool to get what we need from a PSD. I hope this helps get you get what you need faster.</p>
-
-<p>Big thanks to <a href="https://twitter.com/Bishop81">Chris Morris</a> for teaching me this slick method.</p>
+<p>Now, if the requirement changes, I only have to make one change to the stylesheets.</p>
 	  </div>
 
 		
@@ -251,8 +199,8 @@
 		  
 		  
 			 
-				<li><a href="/categories.html#development-ref">
-					development <span>(1)</span>
+				<li><a href="/categories.html#css-ref">
+					css <span>(1)</span>
 					
 				</a></li>
 			
@@ -267,8 +215,8 @@
 		  
 			 
 				<li>
-					<a href="/tags.html#photoshop-ref">
-					photoshop <span>(1)</span>
+					<a href="/tags.html#css-ref">
+					css <span>(1)</span>
 					,
 					</a>
 				</li>
@@ -289,10 +237,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="//css/2013/01/09/z-index.html" title="Base z-index -- SASS to the Rescue">&larr; Previous</a></li>
+		  <li class="previous disabled"><a>&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="//angularjs/javascript/2014/01/22/angular-organization.html" title="Angular Project Organization, As Used By Google Teams">Next &rarr;</a></li>
+		  <li class="next"><a href="//development/2014/01/21/cutting-assets.html" title="Cutting Simple Assets From Photoshop">Next &rarr;</a></li>
 		  
 		</ul>
 

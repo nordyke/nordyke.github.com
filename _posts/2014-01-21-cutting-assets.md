@@ -6,7 +6,6 @@ tags: [photoshop, development]
 fullview: false
 ---
 
-
 This is a quick way to cut assets out of a PSD when you don't need to slice specific sections of an image contained in a layer.  Once you're comfortable with the process and the keyboard shortcuts, you'll be able to cut out an asset in less than a minute.
 
 
@@ -23,7 +22,7 @@ Select Layers
 
 First, you will need to find the layers that make up your needed image.  It might be only one layer, or it could be 20.  The process will be the same.
 
-**Tip**: Turn on **Auto-Select** in Photoshop, so that when you click on an image, the layer is automatically selected in your **Layers** pallette.  This is a lot faster than drilling down into the **Layers** heirarchy created by the designer.
+**Tip**: Turn on **Auto-Select** in Photoshop, so that when you click on an image, the layer is automatically selected in your **Layers** palette.  This is a lot faster than drilling down into the **Layers** hierarchy created by the designer.
 
 ![Auto Select](/assets/img/cutting-assets/auto-select.png)
 
