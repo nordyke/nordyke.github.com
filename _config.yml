@@ -19,6 +19,7 @@ author:
 rss_path: feed.xml
 categories_path: categories.html
 tags_path: tags.html
+about_path: about/
 
 
 # All links will be namespaced by BASE_PATH if defined.
