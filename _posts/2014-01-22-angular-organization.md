@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angular Project Organization, As Used By Google Teams
+title: Google's Angular Project Organization
 categories: [angularjs, javascript]
 tags: [angularjs, javascript]
 fullview: false

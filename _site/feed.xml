@@ -3,11 +3,11 @@
 	<channel>
 		<title>Aaron Nordyke</title>
 		<description>Development Blog of Aaron Nordyke</description>
-		<link>http://nordyke.github.io/</link>
-		<atom:link href="http://nordyke.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		<link>/</link>
+		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Angular Project Organization, As Used By Google Teams</title>
+				<title>Google's Angular Project Organization</title>
 				<description>&lt;p&gt;Organizing a project’s files falls under two general schools of thought.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1. Object Type (aka “The sock drawer”)&lt;/strong&gt;&lt;/p&gt;
@@ -86,8 +86,8 @@ Modules/
 
 &lt;p&gt;&lt;a href=&quot;http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript&quot;&gt;Code Organization In Large AngularJS and JavaScript Applications&lt;/a&gt; – Cliff Meyers&lt;/p&gt;</description>
 				<pubDate>Wed, 22 Jan 2014 00:00:00 -0600</pubDate>
-				<link>http://nordyke.github.io/angularjs/javascript/2014/01/22/angular-organization.html</link>
-				<guid isPermaLink="true">http://nordyke.github.io/angularjs/javascript/2014/01/22/angular-organization.html</guid>
+				<link>/angularjs/javascript/2014/01/22/angular-organization.html</link>
+				<guid isPermaLink="true">/angularjs/javascript/2014/01/22/angular-organization.html</guid>
 			</item>
 		
 			<item>
@@ -168,38 +168,34 @@ Modules/
 
 &lt;p&gt;Big thanks to &lt;a href=&quot;https://twitter.com/Bishop81&quot;&gt;Chris Morris&lt;/a&gt; for teaching me this slick method.&lt;/p&gt;</description>
 				<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate>
-				<link>http://nordyke.github.io/development/2014/01/21/cutting-assets.html</link>
-				<guid isPermaLink="true">http://nordyke.github.io/development/2014/01/21/cutting-assets.html</guid>
+				<link>/development/2014/01/21/cutting-assets.html</link>
+				<guid isPermaLink="true">/development/2014/01/21/cutting-assets.html</guid>
 			</item>
 		
 			<item>
-				<title>Base z-index -- SASS to the Rescue</title>
+				<title>Base z-index using SASS</title>
 				<description>&lt;p&gt;I’m developing an application for a client in the form of overlays on top of their existing content. Today, I was informed that our z-indexes are all too low. The client’s site has elements that can go all the way up to 3000, and our elements were definitely below that. They recommended we use a minimum of 4000 to be safe.&lt;/p&gt;
 
 &lt;p&gt;The most straightforward solution would be to find every z-index and add 4000 to it.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.element { z-index: 50 }&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;css&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;m&#39;&gt;50&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;becomes&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.element { z-index: 4050 }&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;css&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;m&#39;&gt;4050&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;But what happens if we we get a new requirement that our minimum should be 5000? Do you really want to have to find all the z-indexes again? With SASS, this is a non-issue.&lt;/p&gt;
 
 &lt;p&gt;First, I created a new SASS variable to note my base z-index.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$base-z-index: 4000;&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;scss&#39;&gt;&lt;span class=&#39;nv&#39;&gt;$base-z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;mi&#39;&gt;4000&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Next, I added the variable to every z-index instance.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;.element { z-index: $base-z-index + 50; }&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;scss&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;na&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;nv&#39;&gt;$base-z-index&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;+&lt;/span&gt; &lt;span class=&#39;mi&#39;&gt;50&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This also takes advantage of SASS’ built-in math operations.&lt;/p&gt;
 
 &lt;p&gt;Now, if the requirement changes, I only have to make one change to the stylesheets.&lt;/p&gt;</description>
 				<pubDate>Wed, 09 Jan 2013 00:00:00 -0600</pubDate>
-				<link>http://nordyke.github.io/css/2013/01/09/z-index.html</link>
-				<guid isPermaLink="true">http://nordyke.github.io/css/2013/01/09/z-index.html</guid>
+				<link>/css/2013/01/09/z-index.html</link>
+				<guid isPermaLink="true">/css/2013/01/09/z-index.html</guid>
 			</item>
 		
 			<item>
@@ -216,8 +212,8 @@ Modules/
 
 &lt;p&gt;Come in from the wild, hacker. Unit tests are worth the red tape.&lt;/p&gt;</description>
 				<pubDate>Mon, 10 Dec 2012 00:00:00 -0600</pubDate>
-				<link>http://nordyke.github.io/testing/2012/12/10/unit-tests.html</link>
-				<guid isPermaLink="true">http://nordyke.github.io/testing/2012/12/10/unit-tests.html</guid>
+				<link>/testing/2012/12/10/unit-tests.html</link>
+				<guid isPermaLink="true">/testing/2012/12/10/unit-tests.html</guid>
 			</item>
 		
 	</channel>

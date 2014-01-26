@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Base z-index -- SASS to the Rescue</title>
+<title>Base z-index using SASS</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -16,10 +16,10 @@
 <![endif]-->
 
 <!-- Le styles -->
-<link href="http://nordyke.github.io/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://nordyke.github.io/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="http://nordyke.github.io/assets/resources/syntax/syntax.css" rel="stylesheet">
-<link href="http://nordyke.github.io/assets/css/style.css" rel="stylesheet">
+<link href="/assets/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/resources/syntax/syntax.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
 
 <!-- Le fav and touch icons -->
 <!-- Update these with your own images
@@ -29,7 +29,7 @@
 <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
 -->
 
- <link rel="alternate" type="application/rss+xml" title="" href="http://nordyke.github.io/feed.xml">
+ <link rel="alternate" type="application/rss+xml" title="" href="/feed.xml">
 
 <! -- header.html end -->
 
@@ -59,7 +59,7 @@
 		      <i class="fa fa-envelope"></i>
 		    </a>
 		    
-			<a class="navbar-brand" href="http://nordyke.github.io/">
+			<a class="navbar-brand" href="/">
 				<img src="http://www.gravatar.com/avatar/8e2cc430d7ee2ec79255554d73150f3e?s=35" class="img-circle" />
 				Aaron Nordyke
 			</a>
@@ -68,9 +68,9 @@
 		  <!-- Collect the nav links, forms, and other content for toggling -->
 		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-			  <li class="active"><a href="http://nordyke.github.io/">Home</a></li>
-			  <li><a href="http://nordyke.github.io/categories.html">Categories</a></li>
-  			  <li><a href="http://nordyke.github.io/tags.html">Tags</a></li>
+			  <li class="active"><a href="/">Home</a></li>
+			  <li><a href="/categories.html">Categories</a></li>
+  			  <li><a href="/tags.html">Tags</a></li>
 			</ul>
 		  </div><!-- /.navbar-collapse -->
 		</nav>
@@ -81,9 +81,9 @@
             <i class="fa fa-bars"></i>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="http://nordyke.github.io/"><i class="fa fa-home"></i> Home</a></li>
-            <li><a href="http://nordyke.github.io/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
-            <li><a href="http://nordyke.github.io/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
+            <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
               <li class="divider"></li>
             <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
           </ul>
@@ -92,17 +92,17 @@
 		<div class="col-sm-3 sidebar hidden-xs">
 			<! -- sidebar.html -->
 <header class="sidebar-header" role="banner">
-	<a href="http://nordyke.github.io/">
+	<a href="/">
 		<img src="http://www.gravatar.com/avatar/8e2cc430d7ee2ec79255554d73150f3e?s=150" class="img-circle" />
 	</a>
 	<h3 class="title">
-        <a href="http://nordyke.github.io/">Aaron Nordyke</a>
+        <a href="/">Aaron Nordyke</a>
     </h3>
 </header>
 
 
 <div id="bio" class="text-center">
-	Aaron is a Web Developer at VML, a Kansas City digital agency
+	Aaron is a Web Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -140,7 +140,7 @@
 		</li>
 		
 		<li>
-			<a class="btn btn-default btn-sm" href="http://nordyke.github.io/feed.xml">
+			<a class="btn btn-default btn-sm" href="/feed.xml">
 				<i class="fa fa-rss fa-lg"></i>
 			</a>
 		</li>
@@ -156,7 +156,7 @@
 		<div class="col-sm-9 col-sm-offset-3">
 			<article>
 	<div class="page-header">
-	  <h1>Base z-index -- SASS to the Rescue </h1>
+	  <h1>Base z-index using SASS </h1>
 	</div>
 
 	<div class="col-sm-10">
@@ -171,23 +171,19 @@
 	  <p>I’m developing an application for a client in the form of overlays on top of their existing content. Today, I was informed that our z-indexes are all too low. The client’s site has elements that can go all the way up to 3000, and our elements were definitely below that. They recommended we use a minimum of 4000 to be safe.</p>
 
 <p>The most straightforward solution would be to find every z-index and add 4000 to it.</p>
-
-<pre><code>.element { z-index: 50 }</code></pre>
-
+<div class='highlight'><pre><code class='css'><span class='nc'>.element</span> <span class='p'>{</span> <span class='k'>z-index</span><span class='o'>:</span> <span class='m'>50</span> <span class='p'>}</span>
+</code></pre></div>
 <p>becomes</p>
-
-<pre><code>.element { z-index: 4050 }</code></pre>
-
+<div class='highlight'><pre><code class='css'><span class='nc'>.element</span> <span class='p'>{</span> <span class='k'>z-index</span><span class='o'>:</span> <span class='m'>4050</span> <span class='p'>}</span>
+</code></pre></div>
 <p>But what happens if we we get a new requirement that our minimum should be 5000? Do you really want to have to find all the z-indexes again? With SASS, this is a non-issue.</p>
 
 <p>First, I created a new SASS variable to note my base z-index.</p>
-
-<pre><code>$base-z-index: 4000;</code></pre>
-
+<div class='highlight'><pre><code class='scss'><span class='nv'>$base-z-index</span><span class='o'>:</span> <span class='mi'>4000</span><span class='p'>;</span>
+</code></pre></div>
 <p>Next, I added the variable to every z-index instance.</p>
-
-<pre><code>.element { z-index: $base-z-index + 50; }</code></pre>
-
+<div class='highlight'><pre><code class='scss'><span class='nc'>.element</span> <span class='p'>{</span> <span class='na'>z-index</span><span class='o'>:</span> <span class='nv'>$base-z-index</span> <span class='o'>+</span> <span class='mi'>50</span><span class='p'>;</span> <span class='p'>}</span>
+</code></pre></div>
 <p>This also takes advantage of SASS’ built-in math operations.</p>
 
 <p>Now, if the requirement changes, I only have to make one change to the stylesheets.</p>
@@ -199,7 +195,7 @@
 		  
 		  
 			 
-				<li><a href="http://nordyke.github.io/categories.html#css-ref">
+				<li><a href="/categories.html#css-ref">
 					css <span>(1)</span>
 					
 				</a></li>
@@ -215,14 +211,14 @@
 		  
 			 
 				<li>
-					<a href="http://nordyke.github.io/tags.html#css-ref">
+					<a href="/tags.html#css-ref">
 					css <span>(1)</span>
 					,
 					</a>
 				</li>
 			 
 				<li>
-					<a href="http://nordyke.github.io/tags.html#development-ref">
+					<a href="/tags.html#development-ref">
 					development <span>(2)</span>
 					
 					</a>
@@ -237,10 +233,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="http://nordyke.github.io//testing/2012/12/10/unit-tests.html" title="Unit Tests Are Soothing">&larr; Previous</a></li>
+		  <li class="previous"><a href="//testing/2012/12/10/unit-tests.html" title="Unit Tests Are Soothing">&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="http://nordyke.github.io//development/2014/01/21/cutting-assets.html" title="Cutting Simple Assets From Photoshop">Next &rarr;</a></li>
+		  <li class="next"><a href="//development/2014/01/21/cutting-assets.html" title="Cutting Simple Assets From Photoshop">Next &rarr;</a></li>
 		  
 		</ul>
 
@@ -269,9 +265,9 @@
 		</div>
 
     
-	<script type="text/javascript" src="http://nordyke.github.io/assets/resources/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="http://nordyke.github.io/assets/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://nordyke.github.io/assets/js/app.js"></script>
+	<script type="text/javascript" src="/assets/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/js/app.js"></script>
    </body>
 
 </html>
