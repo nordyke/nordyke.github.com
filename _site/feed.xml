@@ -7,6 +7,56 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Chrome Developer Tool -- Pause On Uncaught Exceptions</title>
+				<description>&lt;p&gt;Ever get an error in the browser, but don’t quite know how to track it down? A very quick way is to enable &lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
+
+&lt;p&gt;Sources Tab -&amp;gt; Click the eight-sided symbol till it turns purple. The next time an exception is thrown but not caught, a breakpoint is automatically created in Developer tools.&lt;/p&gt;
+
+&lt;h3 id=&quot;execution_pause_choices&quot;&gt;Execution Pause Choices&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;No Pause&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/no-pause.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Default choice. No pause in execution occurs for exceptions, thrown or caught.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Pause on All Exceptions&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/all-exceptions.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you have to manually continue execution on exceptions you don’t care about.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Pause on Uncaught Exceptions&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/uncaught-only.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Execution is only paused if an exception has been thrown but no code has been written to catch it. This is our golden boy.&lt;/p&gt;
+
+&lt;h3 id=&quot;the_golden_boy&quot;&gt;The golden boy&lt;/h3&gt;
+
+&lt;p&gt;When the pause happens, you have all of the tools at your disposal that would be there for an intentional breakpoint.&lt;/p&gt;
+
+&lt;p&gt;Three of the most valuable are&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Scope Variables&lt;/strong&gt; - inspect all objects and primitives within the current scope (Local, Closure, Global)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/debugging/scope-variables.png&quot; alt=&quot;Scope Variables&quot; /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Console&lt;/strong&gt; - You have access to all the scope variables, so you can interact with them in the console tab.&lt;/p&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Call Stack&lt;/strong&gt; - You can walk backward through the call stack to find the original offending method call.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/debugging/call-stack.png&quot; alt=&quot;Call Stack&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the most powerful in this moment is the stack trace, since you when walk up the call stack&lt;/p&gt;</description>
+				<pubDate>Mon, 27 Jan 2014 00:00:00 -0600</pubDate>
+				<link>/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</link>
+				<guid isPermaLink="true">/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</guid>
+			</item>
+		
+			<item>
 				<title>Google's Angular Project Organization</title>
 				<description>&lt;p&gt;Organizing a project’s files falls under two general schools of thought.&lt;/p&gt;
 
