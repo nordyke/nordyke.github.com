@@ -13,7 +13,7 @@ author:
   github: nordyke
   twitter: nordyke
   linkedin: anordyke
-  bio: Aaron is a Web Developer at VML, a digital agency in Kansas City
+  bio: Web Application Developer at VML, a digital agency in Kansas City
   email_md5: 8e2cc430d7ee2ec79255554d73150f3e
 
 rss_path: feed.xml
@@ -27,11 +27,11 @@ about_path: about/
 # Do not put a "/" at the end of the url.
 #
 # CNAME (http://yourcustomdomain.com)
-#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK 
+#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
 #   (urls will be prefixed with "/" and work relatively)
 #
 # GitHub Pages (http://username.github.io)
-#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK 
+#   DO NOT SET BASE_PATH JUST LEAVE IT BLANK
 #   (urls will be prefixed with "/" and work relatively)
 #
 # GitHub Project Pages (http://username.github.io/project-name)
