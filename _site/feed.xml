@@ -8,21 +8,21 @@
 		
 			<item>
 				<title>Chrome Developer Tool -- Pause On Uncaught Exceptions</title>
-				<description>&lt;p&gt;Ever get an error in the browser, but don’t quite know how to track it down? A very quick way is to enable &lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
+				<description>&lt;p&gt;Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable &lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
 
-&lt;p&gt;Sources Tab -&amp;gt; Click the eight-sided symbol till it turns purple. The next time an exception is thrown but not caught, a breakpoint is automatically created in Developer tools.&lt;/p&gt;
+&lt;p&gt;Sources Tab -&amp;gt; Click the hexagon/pause symbol till it turns purple. The next time an exception is thrown but not caught, a breakpoint is automatically created in Developer tools.&lt;/p&gt;
 
 &lt;h3 id=&quot;execution_pause_choices&quot;&gt;Execution Pause Choices&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;No Pause&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/no-pause.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NO PAUSE&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/no-pause.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Default choice. No pause in execution occurs for exceptions, thrown or caught.&lt;/p&gt;
+&lt;p&gt;Default choice. No pause in execution occurs for any exceptions.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Pause on All Exceptions&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/all-exceptions.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PAUSE ON ALL EXCEPTIONS&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/all-exceptions.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you have to manually continue execution on exceptions you don’t care about.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Pause on Uncaught Exceptions&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/uncaught-only.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PAUSE ON UNCAUGHT EXCEPTIONS&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/uncaught-only.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Execution is only paused if an exception has been thrown but no code has been written to catch it. This is our golden boy.&lt;/p&gt;
 
@@ -30,7 +30,7 @@
 
 &lt;p&gt;When the pause happens, you have all of the tools at your disposal that would be there for an intentional breakpoint.&lt;/p&gt;
 
-&lt;p&gt;Three of the most valuable are&lt;/p&gt;
+&lt;p&gt;Three of the most valuable at this moment are:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Scope Variables&lt;/strong&gt; - inspect all objects and primitives within the current scope (Local, Closure, Global)&lt;/li&gt;
@@ -50,7 +50,9 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/debugging/call-stack.png&quot; alt=&quot;Call Stack&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;One of the most powerful in this moment is the stack trace, since you when walk up the call stack&lt;/p&gt;</description>
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Next time you get a vague exception thrown, turn on the Pause feature in Chrome. It’s a powerful way to inspect the state of your code at the instant before the exception is thrown.&lt;/p&gt;</description>
 				<pubDate>Mon, 27 Jan 2014 00:00:00 -0600</pubDate>
 				<link>/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</link>
 				<guid isPermaLink="true">/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</guid>
