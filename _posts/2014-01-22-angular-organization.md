@@ -14,7 +14,7 @@ The methodology is nicknamed the "The sock drawer", because it resembles how mos
 
 **2. Module**
 
-If a person organized their dresser by outfit, they would be following a modular approach.  The major benefits to this approach are that related files are near each other, and you can get a sense of what a project does just by looking at the file structure.
+If a person organized their dresser by outfit, they would be following a modular approach. The major benefits to this approach are that related files are near each other, and you can get a sense of what a project does just by looking at the file structure.
 
 ## Google's Hybrid ##
 
@@ -22,7 +22,7 @@ Google's internal Angular projects delineate two different categories of files, 
 
 ### 1. (Potentially) Reusable Components ###
 
-There are certain Angular classes that are good candidates be reused, both within the project and potentially in others.  These include:
+There are certain Angular classes that are good candidates be reused, both within the project and potentially in others. These include:
 
 1. Filters (used to format data, filter collections, etc)
 2. Directives (reusable DOM components and behavior)
@@ -33,7 +33,7 @@ Each of these is organized within their respective file-type folders (sock drawe
 
 ### 2. Project Modules ###
 
-Organizing by modules allows related files to be placed near each other, regardless of file type.  Combinations of views and their corresponding controllers are stored in each module folder.
+Organizing by modules allows related files to be placed near each other, regardless of file type. Combinations of views and their corresponding controllers are stored in each module folder.
 
 ### Example Structure Using The Hybrid Approach ###
 

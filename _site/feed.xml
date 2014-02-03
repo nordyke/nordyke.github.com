@@ -7,6 +7,62 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Create Backbone-style Annotated Source Code</title>
+				<description>&lt;p&gt;Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt;, a tool created by Backbone’s Jeremy Ashkenas.&lt;/p&gt;
+
+&lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Backbone - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Underscore - &lt;a href=&quot;http://underscorejs.org/docs/underscore.html&quot;&gt;http://underscorejs.org/docs/underscore.html&lt;/a&gt;&lt;/li&gt;
+
+&lt;li&gt;Coffeescript - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The incredibly simple installation and usage instructions are on the &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt; project site.&lt;/p&gt;
+
+&lt;p&gt;Though it can be configured otherwise, Docco looks for single-line comment style of &lt;code&gt;//&lt;/code&gt; to create the annotations. It also supports basic Markdown syntax. Docco would create &lt;a href=&quot;/docs/user-docco.html&quot;&gt;this page&lt;/a&gt; from the JS below.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;js&#39;&gt;&lt;span class=&#39;c1&#39;&gt;// User&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// ---------&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;// User is a contrived and ridiculously stupid constructor to create a user,&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// and its sole purpose is to give a simple demonstration&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// of [Docco](http://jashkenas.github.io/docco/).  If you judge&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// the code, friendship over.&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;//   (c) Aaron Nordyke 2014&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;// ------&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;// User Constructor.  `name` is the name of the User.&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;//&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// **example:**  `var aaron = new User(&amp;quot;Aaron&amp;quot;)`&lt;/span&gt;
+&lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+
+    &lt;span class=&#39;c1&#39;&gt;// `User.name` is set to &amp;quot;Dave&amp;quot; by default&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;||&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;Dave&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;// Set the `name` of the user.  When choosing a name,&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// make it the best that you can think of.  We don&amp;#39;t&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// need anymore Users running around named &amp;quot;Benedict&amp;quot;,&lt;/span&gt;
+&lt;span class=&#39;c1&#39;&gt;// &amp;quot;Ackbar&amp;quot; or &amp;quot;The 12th Doctor&amp;quot;.&lt;/span&gt;
+&lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;setName&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
+
+&lt;span class=&#39;c1&#39;&gt;// Get the `name` of the user&lt;/span&gt;
+&lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;getName&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(){&lt;/span&gt;
+    &lt;span class=&#39;k&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
+&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Mon, 03 Feb 2014 00:00:00 -0600</pubDate>
+				<link>/development/2014/02/03/docco-annotated-source-code.html</link>
+				<guid isPermaLink="true">/development/2014/02/03/docco-annotated-source-code.html</guid>
+			</item>
+		
+			<item>
 				<title>Chrome Developer Tool -- Pause On Uncaught Exceptions</title>
 				<description>&lt;p&gt;Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable &lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
 
