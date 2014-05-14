@@ -26,7 +26,7 @@ In the example below, we created a `reservationModel` singleton that is accessed
 	// reservationModel
 	// The data can be in any form.  The important thing is that the data exists outside of
 	// temporary modules such as controllers and directives.
-	angular.module('radBlu').service('reservationModel', function(){
+	angular.module('app').service('reservationModel', function(){
 		'use strict';
 
 		// Subset of the data from our actual Model
@@ -47,7 +47,7 @@ In the example below, we created a `reservationModel` singleton that is accessed
 	});
 
 	// Search Controller, into which we inject the reservationModel
-	angular.module('radBlu').controller('SearchCtrl', function($scope, reservationModel){
+	angular.module('app').controller('SearchCtrl', function($scope, reservationModel){
 		'use strict';
 
 		// Glue our model to the view using $scope.  Any updates to reservationModel will
