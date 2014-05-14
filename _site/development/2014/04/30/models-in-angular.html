@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -170,34 +170,33 @@
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project. We wanted a best practice, and the Angular documentation wasn’t giving us any answers.</p>
+	  <p>On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project.  We wanted a best practice, and the Angular documentation wasn’t giving us any answers.</p>
 
-<p>We tried a pub/sub system for a while to pass information. It became useful for broadcasting events, but not as a central source of truth for the data.</p>
+<p>We tried a pub/sub system for a while to pass information.  It became useful for broadcasting events, but not as a central source of truth for the data.</p>
 
-<p>Angular is a large toolbelt with lots ways to glue data and the DOM together. However, the library is frustratingly silent about the Model (with a capital ‘M’).</p>
+<p>Angular is a large toolbelt with lots ways to glue data and the DOM together.  However, the library is frustratingly silent about the Model (with a capital ‘M’).</p>
 
-<p>It’s tempting to make <code>$scope</code> the model. On the surface, this makes sense. Isn’t the model the source of truth that drives what’s in the view? If <code>$scope</code> does just that, doesn’t that make it the model? Emphatically, NO.</p>
+<p>It’s tempting to make <code>$scope</code> the model.  On the surface, this makes sense.  Isn’t the model the source of truth that drives what’s in the view?  If <code>$scope</code> does just that, doesn’t that make it the model? Emphatically, NO.</p>
 
-<p>Models need to persist data between the views and routes. <code>$scope</code> can’t do that. Its lifecycle is limited to the life of the <code>ng-controller</code>, which is usually limited to the life of a route.</p>
+<p>Models need to persist data between the views and routes.  <code>$scope</code> can’t do that.  Its lifecycle is limited to the life of the <code>ng-controller</code>, which is usually limited to the life of a route.</p>
 
 <h1 id="solution">Solution</h1>
+<p>Our eventual solution was to use <a href="https://docs.angularjs.org/guide/providers">Angular factories/services</a>.  They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.</p>
 
-<p>Our eventual solution was to use <a href="https://docs.angularjs.org/guide/providers">Angular factories/services</a>. They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.</p>
-
-<p>In the example below, we created a <code>reservationModel</code> singleton that is accessed amongst various controllers and directives in the application. Any updates to the properties of the <code>reservationModel</code> in one of the modules is automatically reflected in all of the others.</p>
+<p>In the example below, we created a <code>reservationModel</code> singleton that is accessed amongst various controllers and directives in the application.  Any updates to the properties of the <code>reservationModel</code> in one of the modules is automatically reflected in all of the others.</p>
 
 <pre><code>// reservationModel
 // The data can be in any form.  The important thing is that the data exists outside of
 // temporary modules such as controllers and directives.
-angular.module(&#39;radBlu&#39;).service(&#39;reservationModel&#39;, function(){
-	&#39;use strict&#39;;
+angular.module('app').service('reservationModel', function(){
+	'use strict';
 
 	// Subset of the data from our actual Model
 	this.locations = [];
 	this.destination = {
-		displayVal: &#39;&#39;,
-		hotelCode: &#39;&#39;,
-		hotelName: &#39;&#39;
+		displayVal: '',
+		hotelCode: '',
+		hotelName: ''
 	};
 	this.rooms = {};
 	this.dates = {};
@@ -210,27 +209,26 @@ angular.module(&#39;radBlu&#39;).service(&#39;reservationModel&#39;, function(){
 });
 
 // Search Controller, into which we inject the reservationModel
-angular.module(&#39;radBlu&#39;).controller(&#39;SearchCtrl&#39;, function($scope, reservationModel){
-	&#39;use strict&#39;;
+angular.module('app').controller('SearchCtrl', function($scope, reservationModel){
+	'use strict';
 
 	// Glue our model to the view using $scope.  Any updates to reservationModel will
 	// now always be reflected in this Search Controller
 	$scope.reservation = reservationModel;
-});</code></pre>
+}); **Documentation:** [Angular Providers/Factories/Services](https://docs.angularjs.org/guide/providers)
+</code></pre>
 
-<p><strong>Documentation:</strong> <a href="https://docs.angularjs.org/guide/providers">Angular Providers/Factories/Services</a></p>
-
-<h1 id="next_steps_for_our_team">Next steps for our team</h1>
+<h1 id="next-steps-for-our-team">Next steps for our team</h1>
 
 <ul>
-<li>Create standard for organizing the Models</li>
-
-<li>Move all interface between the outside world and the Model into the Model. This includes interaction with AJAX services.</li>
+  <li>Create standard for organizing the Models</li>
+  <li>Move all interface between the outside world and the Model into the Model.  This includes interaction with AJAX services.</li>
 </ul>
 
 <h1 id="summary">Summary</h1>
 
 <p>Use <a href="https://docs.angularjs.org/guide/providers">Angular Providers</a> to create Models, because they exist beyond the lifecycle of the controllers and directives.</p>
+
 	  </div>
 
 		

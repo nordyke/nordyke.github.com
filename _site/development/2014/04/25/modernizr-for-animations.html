@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -172,32 +172,34 @@
 	  <div class="article_body">
 	  <p>Animations in CSS3 are awesome, because the GPU is utilized. Unfortunately, not every browser supports them. Using <a href="http://modernizr.com/">Modernizr</a>, you can target the browsers that support the CSS3 animations, and do something simpler for those that cannot.</p>
 
-<p>Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it. JavaScript is one way to test for feature presence.</p>
+<p>Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it.  JavaScript is one way to test for feature presence.</p>
 
 <pre><code>if(Modernizr.&lt;feature&gt;){
 …
-}</code></pre>
+}
+</code></pre>
 
 <p>Modernizr also automatically add classes to the <code>html</code> tag for each feature the browser supports.</p>
 
-<pre><code>&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; id=&quot;modernizrcom&quot; class=&quot;…csstransforms csstransitions…&quot;&gt;</code></pre>
+<pre><code>&lt;html lang="en" dir="ltr" id="modernizrcom" class="…csstransforms csstransitions…"&gt;
+</code></pre>
 
-<p>This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them. Here’s an example from a current project, where we need a panel to slide in from the left. If the browser supports <code>csstransforms</code> and <code>csstransitions</code>, the panel slides in. If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.</p>
+<p>This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them.  Here’s an example from a current project, where we need a panel to slide in from the left.  If the browser supports <code>csstransforms</code> and <code>csstransitions</code>, the panel slides in.  If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.</p>
 
 <pre><code>//_directions.scss, using Compass mixins
 
 $panel-width: 430px;
 
-// Fallback for Browsers that don&#39;t support CCS3 transitions/transforms
+// Fallback for Browsers that don't support CCS3 transitions/transforms
 .directions-panel {
 	// Place panel outside the viewport, on the left side.
-	left: (0 - $panel-width);
-	top: 150px;
-	position: fixed;
+  		left: (0 - $panel-width);
+  		top: 150px;
+  		position: fixed;
 }
 .directions-panel--open{
 	// Open panel sits just inside the viewport, on the left side
-	left: 0;
+  		left: 0;
 }
 
 // Animation for browsers that support CSS3 transitions/transforms.
@@ -206,12 +208,12 @@ $panel-width: 430px;
 	// Default state.
 	.directions-panel {
 		// Override the fallback positioning
-		left: 0;
-		// If a transform happens on the element, have it occur over
-		// the course of 500ms.
-		@include transition(transform 500ms ease);
-		// Default state is just to the left of the viewport
-		@include transform(translate3d(-$panel-width,0,0));
+  			left: 0;
+  			// If a transform happens on the element, have it occur over
+  			// the course of 500ms.
+  			@include transition(transform 500ms ease);
+  			// Default state is just to the left of the viewport
+  			@include transform(translate3d(-$panel-width,0,0));
 	}
 
 	// Open state
@@ -219,18 +221,21 @@ $panel-width: 430px;
 		// Panel should be inside the viewport, on the left side.
 		// Because of the transition rule above, an animation will occur over
 		// 500ms.
-		@include transform(translate3d(0,0,0));
+  			@include transform(translate3d(0,0,0));
 	}
-}</code></pre>
+}
+</code></pre>
 
 <p>Activate the animation by toggling the class</p>
 
 <pre><code>//directions.js
 
 //Active the animation by toggling the class
-$(&#39;.directions-panel&#39;).addClass(&#39;directions-panel--open&#39;);</code></pre>
+$('.directions-panel').addClass('directions-panel--open');
+</code></pre>
 
-<p>Pure, buttery CSS3 animations. No jQuery <code>.animate</code>.</p>
+<p>Pure, buttery CSS3 animations.  No jQuery <code>.animate</code>.</p>
+
 	  </div>
 
 		

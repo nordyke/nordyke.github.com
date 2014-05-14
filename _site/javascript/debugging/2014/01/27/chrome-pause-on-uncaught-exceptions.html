@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -170,44 +170,50 @@
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable <code>Pause execution on uncaught exceptions</code> in Chrome Developer Tools.</p>
+	  <p>Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable
+<code>Pause execution on uncaught exceptions</code> in Chrome Developer Tools.</p>
 
-<p>Sources Tab -&gt; Click the hexagon/pause symbol till it turns purple. The next time an exception is thrown but not caught, a breakpoint is automatically created in Developer tools.</p>
+<p>Sources Tab -&gt; Click the hexagon/pause symbol till it turns purple. The next time an exception is thrown but not caught,
+a breakpoint is automatically created in Developer tools.</p>
 
-<h3 id="execution_pause_choices">Execution Pause Choices</h3>
+<h3 id="execution-pause-choices">Execution Pause Choices</h3>
 
-<p><strong>NO PAUSE</strong> <img src="/assets/img/debugging/no-pause.png" alt="Do not pause" /></p>
+<p><strong>NO PAUSE</strong>  <img src="/assets/img/debugging/no-pause.png" alt="Do not pause" /></p>
 
 <p>Default choice. No pause in execution occurs for any exceptions.</p>
-<hr />
-<p><strong>PAUSE ON ALL EXCEPTIONS</strong> <img src="/assets/img/debugging/all-exceptions.png" alt="Do not pause" /></p>
 
-<p>Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you have to manually continue execution on exceptions you don’t care about.</p>
 <hr />
-<p><strong>PAUSE ON UNCAUGHT EXCEPTIONS</strong> <img src="/assets/img/debugging/uncaught-only.png" alt="Do not pause" /></p>
+
+<p><strong>PAUSE ON ALL EXCEPTIONS</strong>  <img src="/assets/img/debugging/all-exceptions.png" alt="Do not pause" /></p>
+
+<p>Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you
+have to manually continue execution on exceptions you don’t care about.</p>
+
+<hr />
+
+<p><strong>PAUSE ON UNCAUGHT EXCEPTIONS</strong>  <img src="/assets/img/debugging/uncaught-only.png" alt="Do not pause" /></p>
 
 <p>Execution is only paused if an exception has been thrown but no code has been written to catch it. This is our golden boy.</p>
 
-<h3 id="the_golden_boy">The golden boy</h3>
+<h3 id="the-golden-boy">The golden boy</h3>
 
 <p>When the pause happens, you have all of the tools at your disposal that would be there for an intentional breakpoint.</p>
 
 <p>Three of the most valuable at this moment are:</p>
 
 <ol>
-<li><strong>Scope Variables</strong> - inspect all objects and primitives within the current scope (Local, Closure, Global)</li>
+  <li><strong>Scope Variables</strong> - inspect all objects and primitives within the current scope (Local, Closure, Global)</li>
 </ol>
 
 <p><img src="/assets/img/debugging/scope-variables.png" alt="Scope Variables" /></p>
 
 <ol>
-<li>
-<p><strong>Console</strong> - You have access to all the scope variables, so you can interact with them in the console tab.</p>
-</li>
-
-<li>
-<p><strong>Call Stack</strong> - You can walk backward through the call stack to find the original offending method call.</p>
-</li>
+  <li>
+    <p><strong>Console</strong> - You have access to all the scope variables, so you can interact with them in the console tab.</p>
+  </li>
+  <li>
+    <p><strong>Call Stack</strong> - You can walk backward through the call stack to find the original offending method call.</p>
+  </li>
 </ol>
 
 <p><img src="/assets/img/debugging/call-stack.png" alt="Call Stack" /></p>
@@ -215,6 +221,8 @@
 <h3 id="summary">Summary</h3>
 
 <p>Next time you get a vague exception thrown, turn on the Pause feature in Chrome. It’s a powerful way to inspect the state of your code at the instant before the exception is thrown.</p>
+
+
 	  </div>
 
 		

@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -170,55 +170,55 @@
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
+	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code.  And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
 
 <h3 id="examples">Examples</h3>
 
 <ul>
-<li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
-
-<li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
-
-<li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+  <li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+  <li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
+  <li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
 </ul>
 
 <p>The incredibly simple installation and usage instructions are on the <a href="http://jashkenas.github.io/docco/">Docco</a> project site.</p>
 
-<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations. It also supports basic Markdown syntax. Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
-<div class='highlight'><pre><code class='js'><span class='c1'>// User</span>
-<span class='c1'>// ---------</span>
+<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations.  It also supports basic Markdown syntax.  Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
 
-<span class='c1'>// User is a contrived and ridiculously stupid constructor to create a user,</span>
-<span class='c1'>// and its sole purpose is to give a simple demonstration</span>
-<span class='c1'>// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
-<span class='c1'>// the code, friendship over.</span>
+<div class="highlight"><pre><code class="js"><span class="c1">// User</span>
+<span class="c1">// ---------</span>
 
-<span class='c1'>//   (c) Aaron Nordyke 2014</span>
+<span class="c1">// User is a contrived and ridiculously stupid constructor to create a user,</span>
+<span class="c1">// and its sole purpose is to give a simple demonstration</span>
+<span class="c1">// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
+<span class="c1">// the code, friendship over.</span>
 
-<span class='c1'>// ------</span>
+<span class="c1">//   (c) Aaron Nordyke 2014</span>
 
-<span class='c1'>// User Constructor.  `name` is the name of the User.</span>
-<span class='c1'>//</span>
-<span class='c1'>// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
-<span class='kd'>var</span> <span class='nx'>User</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
+<span class="c1">// ------</span>
 
-    <span class='c1'>// `User.name` is set to &quot;Dave&quot; by default</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span> <span class='o'>||</span> <span class='s1'>&#39;Dave&#39;</span><span class='p'>;</span>
-<span class='p'>};</span>
+<span class="c1">// User Constructor.  `name` is the name of the User.</span>
+<span class="c1">//</span>
+<span class="c1">// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
+<span class="kd">var</span> <span class="nx">User</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
 
-<span class='c1'>// Set the `name` of the user.  When choosing a name,</span>
-<span class='c1'>// make it the best that you can think of.  We don&#39;t</span>
-<span class='c1'>// need anymore Users running around named &quot;Benedict&quot;,</span>
-<span class='c1'>// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>setName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
+    <span class="c1">// `User.name` is set to &quot;Dave&quot; by default</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="s1">&#39;Dave&#39;</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class='c1'>// Get the `name` of the user</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>getName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
-    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
+<span class="c1">// Set the `name` of the user.  When choosing a name,</span>
+<span class="c1">// make it the best that you can think of.  We don&#39;t</span>
+<span class="c1">// need anymore Users running around named &quot;Benedict&quot;,</span>
+<span class="c1">// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">setName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Get the `name` of the user</span>
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div>
+
 	  </div>
 
 		

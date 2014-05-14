@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -180,36 +180,33 @@
 
 <p>If a person organized their dresser by outfit, they would be following a modular approach. The major benefits to this approach are that related files are near each other, and you can get a sense of what a project does just by looking at the file structure.</p>
 
-<h2 id="googles_hybrid">Google’s Hybrid</h2>
+<h2 id="googles-hybrid">Google’s Hybrid</h2>
 
 <p>Google’s internal Angular projects delineate two different categories of files, and the organization is different for each.</p>
 
-<h3 id="1_potentially_reusable_components">1. (Potentially) Reusable Components</h3>
+<h3 id="potentially-reusable-components">1. (Potentially) Reusable Components</h3>
 
 <p>There are certain Angular classes that are good candidates be reused, both within the project and potentially in others. These include:</p>
 
 <ol>
-<li>Filters (used to format data, filter collections, etc)</li>
-
-<li>Directives (reusable DOM components and behavior)</li>
-
-<li>Constants</li>
-
-<li>Services (singletons containing things like ajax services)</li>
+  <li>Filters (used to format data, filter collections, etc)</li>
+  <li>Directives (reusable DOM components and behavior)</li>
+  <li>Constants</li>
+  <li>Services (singletons containing things like ajax services)</li>
 </ol>
 
 <p>Each of these is organized within their respective file-type folders (sock drawers).</p>
 
-<h3 id="2_project_modules">2. Project Modules</h3>
+<h3 id="project-modules">2. Project Modules</h3>
 
 <p>Organizing by modules allows related files to be placed near each other, regardless of file type. Combinations of views and their corresponding controllers are stored in each module folder.</p>
 
-<h3 id="example_structure_using_the_hybrid_approach">Example Structure Using The Hybrid Approach</h3>
+<h3 id="example-structure-using-the-hybrid-approach">Example Structure Using The Hybrid Approach</h3>
 
 <p>This is a very simple example to illustrate the hybrid approach.</p>
 
 <pre><code>// Reusable components (potentially across projects!)
-Reusable/ (name it whatever you&#39;d like)
+Reusable/ (name it whatever you'd like)
 	Filters/
 		CurrencyFilters.js
 		CollectionFilters.js
@@ -236,17 +233,20 @@ Modules/
 		viewProfile.html
 	EditProfile/
 		EditProfileController.js
-		editProfile.html</code></pre>
+		editProfile.html
+</code></pre>
 
 <h2 id="summary">Summary</h2>
 
 <p>I think this is a compelling way to organize the codebase, regardless of the project’s dominant framework.</p>
 
-<h2 id="further_study">Further Study</h2>
+<h2 id="further-study">Further Study</h2>
 
 <p><a href="http://www.confreaks.com/videos/759-rubymidwest2011-keynote-architecture-the-lost-years">Architecture, The Lost Years</a> – Uncle Bob Martin</p>
 
 <p><a href="http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript">Code Organization In Large AngularJS and JavaScript Applications</a> – Cliff Meyers</p>
+
+
 	  </div>
 
 		

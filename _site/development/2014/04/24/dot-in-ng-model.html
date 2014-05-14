@@ -104,7 +104,7 @@
 
 
 <div id="bio" class="text-center">
-	Web Application Developer at VML, a digital agency in Kansas City
+	Lead Application Developer at VML, a digital agency in Kansas City
 </div>
 
 
@@ -170,21 +170,25 @@
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Always have a <code>.</code> in your <code>ng-model</code>. This means that Angular is updating an Object property, rather than the entire Object reference or primitive.</p>
+	  <p>Always have a <code>.</code> in your <code>ng-model</code>.  This means that Angular is updating an Object property, rather than the entire Object reference or primitive.</p>
 
-<p><em>”..if you use ng-model there has to be a dot somewhere. If you don’t have a dot, you’re doing it wrong..”.</em> <strong>Miško Hevery, Angular Core Team</strong></p>
+<p><em>”..if you use ng-model there has to be a dot somewhere. If you don’t have a dot, you’re doing it wrong..”.</em>
+<strong>Miško Hevery, Angular Core Team</strong></p>
 
 <p><strong>Bad</strong></p>
 
-<pre><code>&lt;input type=&quot;text&quot; ng-model=&quot;dogname&quot; /&gt;</code></pre>
+<pre><code>&lt;input type="text" ng-model="dogname" /&gt;
+</code></pre>
 
 <p><strong>Good</strong></p>
 
-<pre><code>&lt;input type=&quot;text&quot; ng-model=&quot;dog.name&quot; /&gt;</code></pre>
+<pre><code>&lt;input type="text" ng-model="dog.name" /&gt;
+</code></pre>
 
-<p>Sometimes in Angular, because of the way JS works, when you don’t use a dot, <code>dogname</code> becames a new <em>child</em> value that is a shadow of the original <em>parent</em> <code>dogname</code>. Now, whenever <em>child</em> <code>dogname</code> gets updated, <em>parent</em> does not. This occurs mostly in nested <code>$scope</code> from <code>Controllers</code> and <code>Directives</code>.</p>
+<p>Sometimes in Angular, because of the way JS works, when you don’t use a dot, <code>dogname</code> becames a new <em>child</em> value that is a shadow of the original <em>parent</em> <code>dogname</code>.  Now, whenever <em>child</em> <code>dogname</code> gets updated, <em>parent</em> does not.  This occurs mostly in nested <code>$scope</code> from <code>Controllers</code> and <code>Directives</code>.</p>
 
 <p>Use the <code>.</code>, and you avoid the problem.</p>
+
 	  </div>
 
 		

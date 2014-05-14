@@ -8,17 +8,17 @@
 		
 			<item>
 				<title>Bowling Kata Seed update</title>
-				<description>&lt;p&gt;I updated my &lt;a href=&quot;https://github.com/nordyke/bowling-kata-seed&quot;&gt;Bowling Kata Seed&lt;/a&gt; repo to use &lt;a href=&quot;http://karma-runner.github.io/0.12/index.html&quot;&gt;Karma&lt;/a&gt; test runner, rather than its terribly-named former self, Testacular. Instructions are in the README.&lt;/p&gt;
+				<description>&lt;p&gt;I updated my &lt;a href=&quot;https://github.com/nordyke/bowling-kata-seed&quot;&gt;Bowling Kata Seed&lt;/a&gt; repo to use &lt;a href=&quot;http://karma-runner.github.io/0.12/index.html&quot;&gt;Karma&lt;/a&gt; test runner, rather than its terribly-named former self, Testacular.  Instructions are in the README.&lt;/p&gt;
 
 &lt;p&gt;Bowling Kata Seed is a starter for practicing unit testing and test-driven development in JavaScript.&lt;/p&gt;
 
 &lt;p&gt;https://github.com/nordyke/bowling-kata-seed&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;I heard this little gem on the radio this morning.&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;“Miss one day of practice, I notice; miss two, the critics notice; miss three, the audience notices”. &lt;em&gt;Franz Liszt, Composer and Pianist&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+&lt;hr /&gt;
+
+&lt;p&gt;I heard this little gem on the radio this morning.
+&amp;gt; “Miss one day of practice, I notice; miss two, the critics notice; miss three, the audience notices”.  &lt;em&gt;Franz Liszt, Composer and Pianist&lt;/em&gt;&lt;/p&gt;
+</description>
 				<pubDate>Sat, 10 May 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/05/10/updated-bowling-kata.html</link>
 				<guid isPermaLink="true">/development/2014/05/10/updated-bowling-kata.html</guid>
@@ -28,7 +28,8 @@
 				<title>Angular vs Ember From a Fan of Both</title>
 				<description>&lt;p&gt;This is a great series of posts from a guy who’s a big contributor to Angular and now works with Ember.js at Netflix alongside one of the core team members of Ember. http://www.benlesh.com/2014/04/embular-part-1-comparing-ember-and.html (6 parts total).&lt;/p&gt;
 
-&lt;p&gt;If you’re looking for an article to tell you which one is better, you won’t find it here.&lt;/p&gt;</description>
+&lt;p&gt;If you’re looking for an article to tell you which one is better, you won’t find it here.&lt;/p&gt;
+</description>
 				<pubDate>Thu, 01 May 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/05/01/angular-vs-ember.html</link>
 				<guid isPermaLink="true">/development/2014/05/01/angular-vs-ember.html</guid>
@@ -36,34 +37,33 @@
 		
 			<item>
 				<title>Models in Angular</title>
-				<description>&lt;p&gt;On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project. We wanted a best practice, and the Angular documentation wasn’t giving us any answers.&lt;/p&gt;
+				<description>&lt;p&gt;On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project.  We wanted a best practice, and the Angular documentation wasn’t giving us any answers.&lt;/p&gt;
 
-&lt;p&gt;We tried a pub/sub system for a while to pass information. It became useful for broadcasting events, but not as a central source of truth for the data.&lt;/p&gt;
+&lt;p&gt;We tried a pub/sub system for a while to pass information.  It became useful for broadcasting events, but not as a central source of truth for the data.&lt;/p&gt;
 
-&lt;p&gt;Angular is a large toolbelt with lots ways to glue data and the DOM together. However, the library is frustratingly silent about the Model (with a capital ‘M’).&lt;/p&gt;
+&lt;p&gt;Angular is a large toolbelt with lots ways to glue data and the DOM together.  However, the library is frustratingly silent about the Model (with a capital ‘M’).&lt;/p&gt;
 
-&lt;p&gt;It’s tempting to make &lt;code&gt;$scope&lt;/code&gt; the model. On the surface, this makes sense. Isn’t the model the source of truth that drives what’s in the view? If &lt;code&gt;$scope&lt;/code&gt; does just that, doesn’t that make it the model? Emphatically, NO.&lt;/p&gt;
+&lt;p&gt;It’s tempting to make &lt;code&gt;$scope&lt;/code&gt; the model.  On the surface, this makes sense.  Isn’t the model the source of truth that drives what’s in the view?  If &lt;code&gt;$scope&lt;/code&gt; does just that, doesn’t that make it the model? Emphatically, NO.&lt;/p&gt;
 
-&lt;p&gt;Models need to persist data between the views and routes. &lt;code&gt;$scope&lt;/code&gt; can’t do that. Its lifecycle is limited to the life of the &lt;code&gt;ng-controller&lt;/code&gt;, which is usually limited to the life of a route.&lt;/p&gt;
+&lt;p&gt;Models need to persist data between the views and routes.  &lt;code&gt;$scope&lt;/code&gt; can’t do that.  Its lifecycle is limited to the life of the &lt;code&gt;ng-controller&lt;/code&gt;, which is usually limited to the life of a route.&lt;/p&gt;
 
 &lt;h1 id=&quot;solution&quot;&gt;Solution&lt;/h1&gt;
+&lt;p&gt;Our eventual solution was to use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular factories/services&lt;/a&gt;.  They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.&lt;/p&gt;
 
-&lt;p&gt;Our eventual solution was to use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular factories/services&lt;/a&gt;. They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.&lt;/p&gt;
-
-&lt;p&gt;In the example below, we created a &lt;code&gt;reservationModel&lt;/code&gt; singleton that is accessed amongst various controllers and directives in the application. Any updates to the properties of the &lt;code&gt;reservationModel&lt;/code&gt; in one of the modules is automatically reflected in all of the others.&lt;/p&gt;
+&lt;p&gt;In the example below, we created a &lt;code&gt;reservationModel&lt;/code&gt; singleton that is accessed amongst various controllers and directives in the application.  Any updates to the properties of the &lt;code&gt;reservationModel&lt;/code&gt; in one of the modules is automatically reflected in all of the others.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;// reservationModel
 // The data can be in any form.  The important thing is that the data exists outside of
 // temporary modules such as controllers and directives.
-angular.module(&amp;#39;radBlu&amp;#39;).service(&amp;#39;reservationModel&amp;#39;, function(){
-	&amp;#39;use strict&amp;#39;;
+angular.module(&#39;app&#39;).service(&#39;reservationModel&#39;, function(){
+	&#39;use strict&#39;;
 
 	// Subset of the data from our actual Model
 	this.locations = [];
 	this.destination = {
-		displayVal: &amp;#39;&amp;#39;,
-		hotelCode: &amp;#39;&amp;#39;,
-		hotelName: &amp;#39;&amp;#39;
+		displayVal: &#39;&#39;,
+		hotelCode: &#39;&#39;,
+		hotelName: &#39;&#39;
 	};
 	this.rooms = {};
 	this.dates = {};
@@ -76,27 +76,26 @@ angular.module(&amp;#39;radBlu&amp;#39;).service(&amp;#39;reservationModel&amp;#
 });
 
 // Search Controller, into which we inject the reservationModel
-angular.module(&amp;#39;radBlu&amp;#39;).controller(&amp;#39;SearchCtrl&amp;#39;, function($scope, reservationModel){
-	&amp;#39;use strict&amp;#39;;
+angular.module(&#39;app&#39;).controller(&#39;SearchCtrl&#39;, function($scope, reservationModel){
+	&#39;use strict&#39;;
 
 	// Glue our model to the view using $scope.  Any updates to reservationModel will
 	// now always be reflected in this Search Controller
 	$scope.reservation = reservationModel;
-});&lt;/code&gt;&lt;/pre&gt;
+}); **Documentation:** [Angular Providers/Factories/Services](https://docs.angularjs.org/guide/providers)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular Providers/Factories/Services&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;next_steps_for_our_team&quot;&gt;Next steps for our team&lt;/h1&gt;
+&lt;h1 id=&quot;next-steps-for-our-team&quot;&gt;Next steps for our team&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Create standard for organizing the Models&lt;/li&gt;
-
-&lt;li&gt;Move all interface between the outside world and the Model into the Model. This includes interaction with AJAX services.&lt;/li&gt;
+  &lt;li&gt;Create standard for organizing the Models&lt;/li&gt;
+  &lt;li&gt;Move all interface between the outside world and the Model into the Model.  This includes interaction with AJAX services.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
 
-&lt;p&gt;Use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular Providers&lt;/a&gt; to create Models, because they exist beyond the lifecycle of the controllers and directives.&lt;/p&gt;</description>
+&lt;p&gt;Use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular Providers&lt;/a&gt; to create Models, because they exist beyond the lifecycle of the controllers and directives.&lt;/p&gt;
+</description>
 				<pubDate>Wed, 30 Apr 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/04/30/models-in-angular.html</link>
 				<guid isPermaLink="true">/development/2014/04/30/models-in-angular.html</guid>
@@ -106,32 +105,34 @@ angular.module(&amp;#39;radBlu&amp;#39;).controller(&amp;#39;SearchCtrl&amp;#39;
 				<title>User Modernizr for Buttery-smooth CSS3 Animations</title>
 				<description>&lt;p&gt;Animations in CSS3 are awesome, because the GPU is utilized. Unfortunately, not every browser supports them. Using &lt;a href=&quot;http://modernizr.com/&quot;&gt;Modernizr&lt;/a&gt;, you can target the browsers that support the CSS3 animations, and do something simpler for those that cannot.&lt;/p&gt;
 
-&lt;p&gt;Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it. JavaScript is one way to test for feature presence.&lt;/p&gt;
+&lt;p&gt;Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it.  JavaScript is one way to test for feature presence.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;if(Modernizr.&amp;lt;feature&amp;gt;){
 …
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Modernizr also automatically add classes to the &lt;code&gt;html&lt;/code&gt; tag for each feature the browser supports.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;html lang=&amp;quot;en&amp;quot; dir=&amp;quot;ltr&amp;quot; id=&amp;quot;modernizrcom&amp;quot; class=&amp;quot;…csstransforms csstransitions…&amp;quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; id=&quot;modernizrcom&quot; class=&quot;…csstransforms csstransitions…&quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them. Here’s an example from a current project, where we need a panel to slide in from the left. If the browser supports &lt;code&gt;csstransforms&lt;/code&gt; and &lt;code&gt;csstransitions&lt;/code&gt;, the panel slides in. If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.&lt;/p&gt;
+&lt;p&gt;This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them.  Here’s an example from a current project, where we need a panel to slide in from the left.  If the browser supports &lt;code&gt;csstransforms&lt;/code&gt; and &lt;code&gt;csstransitions&lt;/code&gt;, the panel slides in.  If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;//_directions.scss, using Compass mixins
 
 $panel-width: 430px;
 
-// Fallback for Browsers that don&amp;#39;t support CCS3 transitions/transforms
+// Fallback for Browsers that don&#39;t support CCS3 transitions/transforms
 .directions-panel {
 	// Place panel outside the viewport, on the left side.
-	left: (0 - $panel-width);
-	top: 150px;
-	position: fixed;
+  		left: (0 - $panel-width);
+  		top: 150px;
+  		position: fixed;
 }
 .directions-panel--open{
 	// Open panel sits just inside the viewport, on the left side
-	left: 0;
+  		left: 0;
 }
 
 // Animation for browsers that support CSS3 transitions/transforms.
@@ -140,12 +141,12 @@ $panel-width: 430px;
 	// Default state.
 	.directions-panel {
 		// Override the fallback positioning
-		left: 0;
-		// If a transform happens on the element, have it occur over
-		// the course of 500ms.
-		@include transition(transform 500ms ease);
-		// Default state is just to the left of the viewport
-		@include transform(translate3d(-$panel-width,0,0));
+  			left: 0;
+  			// If a transform happens on the element, have it occur over
+  			// the course of 500ms.
+  			@include transition(transform 500ms ease);
+  			// Default state is just to the left of the viewport
+  			@include transform(translate3d(-$panel-width,0,0));
 	}
 
 	// Open state
@@ -153,18 +154,21 @@ $panel-width: 430px;
 		// Panel should be inside the viewport, on the left side.
 		// Because of the transition rule above, an animation will occur over
 		// 500ms.
-		@include transform(translate3d(0,0,0));
+  			@include transform(translate3d(0,0,0));
 	}
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Activate the animation by toggling the class&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;//directions.js
 
 //Active the animation by toggling the class
-$(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
+$(&#39;.directions-panel&#39;).addClass(&#39;directions-panel--open&#39;);
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Pure, buttery CSS3 animations. No jQuery &lt;code&gt;.animate&lt;/code&gt;.&lt;/p&gt;</description>
+&lt;p&gt;Pure, buttery CSS3 animations.  No jQuery &lt;code&gt;.animate&lt;/code&gt;.&lt;/p&gt;
+</description>
 				<pubDate>Fri, 25 Apr 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/04/25/modernizr-for-animations.html</link>
 				<guid isPermaLink="true">/development/2014/04/25/modernizr-for-animations.html</guid>
@@ -172,21 +176,25 @@ $(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&
 		
 			<item>
 				<title>Always Use a Dot In ng-model</title>
-				<description>&lt;p&gt;Always have a &lt;code&gt;.&lt;/code&gt; in your &lt;code&gt;ng-model&lt;/code&gt;. This means that Angular is updating an Object property, rather than the entire Object reference or primitive.&lt;/p&gt;
+				<description>&lt;p&gt;Always have a &lt;code&gt;.&lt;/code&gt; in your &lt;code&gt;ng-model&lt;/code&gt;.  This means that Angular is updating an Object property, rather than the entire Object reference or primitive.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;”..if you use ng-model there has to be a dot somewhere. If you don’t have a dot, you’re doing it wrong..”.&lt;/em&gt; &lt;strong&gt;Miško Hevery, Angular Core Team&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;”..if you use ng-model there has to be a dot somewhere. If you don’t have a dot, you’re doing it wrong..”.&lt;/em&gt;
+&lt;strong&gt;Miško Hevery, Angular Core Team&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Bad&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;dogname&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&quot;text&quot; ng-model=&quot;dogname&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;Good&lt;/strong&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;dog.name&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&quot;text&quot; ng-model=&quot;dog.name&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Sometimes in Angular, because of the way JS works, when you don’t use a dot, &lt;code&gt;dogname&lt;/code&gt; becames a new &lt;em&gt;child&lt;/em&gt; value that is a shadow of the original &lt;em&gt;parent&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt;. Now, whenever &lt;em&gt;child&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt; gets updated, &lt;em&gt;parent&lt;/em&gt; does not. This occurs mostly in nested &lt;code&gt;$scope&lt;/code&gt; from &lt;code&gt;Controllers&lt;/code&gt; and &lt;code&gt;Directives&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Sometimes in Angular, because of the way JS works, when you don’t use a dot, &lt;code&gt;dogname&lt;/code&gt; becames a new &lt;em&gt;child&lt;/em&gt; value that is a shadow of the original &lt;em&gt;parent&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt;.  Now, whenever &lt;em&gt;child&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt; gets updated, &lt;em&gt;parent&lt;/em&gt; does not.  This occurs mostly in nested &lt;code&gt;$scope&lt;/code&gt; from &lt;code&gt;Controllers&lt;/code&gt; and &lt;code&gt;Directives&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Use the &lt;code&gt;.&lt;/code&gt;, and you avoid the problem.&lt;/p&gt;</description>
+&lt;p&gt;Use the &lt;code&gt;.&lt;/code&gt;, and you avoid the problem.&lt;/p&gt;
+</description>
 				<pubDate>Thu, 24 Apr 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/04/24/dot-in-ng-model.html</link>
 				<guid isPermaLink="true">/development/2014/04/24/dot-in-ng-model.html</guid>
@@ -194,19 +202,22 @@ $(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&
 		
 			<item>
 				<title>Go All-Or-Nothing on Feature Icing</title>
-				<description>&lt;p&gt;There are two types of front-end features of any web application. First, there are those that are necessary. For these, you need to put in the extra work for them to function across supported devices and browsers.&lt;/p&gt;
+				<description>&lt;p&gt;There are two types of front-end features of any web application. First, there are those that are necessary.  For these, you need to put in the extra work for them to function across supported devices and browsers.&lt;/p&gt;
 
-&lt;p&gt;Second, there are those that are icing on the cake. They add to the experience, but they are not requisite for the app to function.&lt;/p&gt;
+&lt;p&gt;Second, there are those that are icing on the cake.  They add to the experience, but they are not requisite for the app to function.&lt;/p&gt;
 
-&lt;p&gt;When you’re dealing with feature icing, go all-or-nothing. If the device supports the functionality necessary to make the feature some buttery awesomess, then use it. If the device doesn’t support the functionality necessary for greatness, don’t create a lowest common denominator solution to satisfy it. Forget the feature.&lt;/p&gt;
+&lt;p&gt;When you’re dealing with feature icing, go all-or-nothing.  If the device supports the functionality necessary to make the feature some buttery awesomess, then use it.  If the device doesn’t support the functionality necessary for greatness, don’t create a lowest common denominator solution to satisfy it. Forget the feature.&lt;/p&gt;
+
 &lt;hr /&gt;
+
 &lt;p&gt;Examples:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Rounded corners&lt;/li&gt;
+  &lt;li&gt;Rounded corners&lt;/li&gt;
+  &lt;li&gt;Animations (CSS3 vs jQuery)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;Animations (CSS3 vs jQuery)&lt;/li&gt;
-&lt;/ul&gt;</description>
+</description>
 				<pubDate>Wed, 23 Apr 2014 00:00:00 -0500</pubDate>
 				<link>/development/2014/04/23/feature-icing.html</link>
 				<guid isPermaLink="true">/development/2014/04/23/feature-icing.html</guid>
@@ -214,55 +225,55 @@ $(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&
 		
 			<item>
 				<title>Create Backbone-style Annotated Source Code</title>
-				<description>&lt;p&gt;Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt;, a tool created by Backbone’s Jeremy Ashkenas.&lt;/p&gt;
+				<description>&lt;p&gt;Backbone, Underscore and CoffeeScript have awesome annotated source code.  And it’s really easy to create in your own project using &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt;, a tool created by Backbone’s Jeremy Ashkenas.&lt;/p&gt;
 
 &lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Backbone - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;Underscore - &lt;a href=&quot;http://underscorejs.org/docs/underscore.html&quot;&gt;http://underscorejs.org/docs/underscore.html&lt;/a&gt;&lt;/li&gt;
-
-&lt;li&gt;Coffeescript - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Backbone - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Underscore - &lt;a href=&quot;http://underscorejs.org/docs/underscore.html&quot;&gt;http://underscorejs.org/docs/underscore.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Coffeescript - &lt;a href=&quot;http://backbonejs.org/docs/backbone.html&quot;&gt;http://backbonejs.org/docs/backbone.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;The incredibly simple installation and usage instructions are on the &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt; project site.&lt;/p&gt;
 
-&lt;p&gt;Though it can be configured otherwise, Docco looks for single-line comment style of &lt;code&gt;//&lt;/code&gt; to create the annotations. It also supports basic Markdown syntax. Docco would create &lt;a href=&quot;/docs/user-docco.html&quot;&gt;this page&lt;/a&gt; from the JS below.&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;js&#39;&gt;&lt;span class=&#39;c1&#39;&gt;// User&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// ---------&lt;/span&gt;
+&lt;p&gt;Though it can be configured otherwise, Docco looks for single-line comment style of &lt;code&gt;//&lt;/code&gt; to create the annotations.  It also supports basic Markdown syntax.  Docco would create &lt;a href=&quot;/docs/user-docco.html&quot;&gt;this page&lt;/a&gt; from the JS below.&lt;/p&gt;
 
-&lt;span class=&#39;c1&#39;&gt;// User is a contrived and ridiculously stupid constructor to create a user,&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// and its sole purpose is to give a simple demonstration&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// of [Docco](http://jashkenas.github.io/docco/).  If you judge&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// the code, friendship over.&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// User&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ---------&lt;/span&gt;
 
-&lt;span class=&#39;c1&#39;&gt;//   (c) Aaron Nordyke 2014&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// User is a contrived and ridiculously stupid constructor to create a user,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// and its sole purpose is to give a simple demonstration&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// of [Docco](http://jashkenas.github.io/docco/).  If you judge&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// the code, friendship over.&lt;/span&gt;
 
-&lt;span class=&#39;c1&#39;&gt;// ------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//   (c) Aaron Nordyke 2014&lt;/span&gt;
 
-&lt;span class=&#39;c1&#39;&gt;// User Constructor.  `name` is the name of the User.&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;//&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// **example:**  `var aaron = new User(&amp;quot;Aaron&amp;quot;)`&lt;/span&gt;
-&lt;span class=&#39;kd&#39;&gt;var&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ------&lt;/span&gt;
 
-    &lt;span class=&#39;c1&#39;&gt;// `User.name` is set to &amp;quot;Dave&amp;quot; by default&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;||&lt;/span&gt; &lt;span class=&#39;s1&#39;&gt;&amp;#39;Dave&amp;#39;&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
-&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// User Constructor.  `name` is the name of the User.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// **example:**  `var aaron = new User(&amp;quot;Aaron&amp;quot;)`&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
 
-&lt;span class=&#39;c1&#39;&gt;// Set the `name` of the user.  When choosing a name,&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// make it the best that you can think of.  We don&amp;#39;t&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// need anymore Users running around named &amp;quot;Benedict&amp;quot;,&lt;/span&gt;
-&lt;span class=&#39;c1&#39;&gt;// &amp;quot;Ackbar&amp;quot; or &amp;quot;The 12th Doctor&amp;quot;.&lt;/span&gt;
-&lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;setName&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;){&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
-&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// `User.name` is set to &amp;quot;Dave&amp;quot; by default&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Dave&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-&lt;span class=&#39;c1&#39;&gt;// Get the `name` of the user&lt;/span&gt;
-&lt;span class=&#39;nx&#39;&gt;User&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;prototype&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;getName&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;=&lt;/span&gt; &lt;span class=&#39;kd&#39;&gt;function&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;(){&lt;/span&gt;
-    &lt;span class=&#39;k&#39;&gt;return&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;this&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;.&lt;/span&gt;&lt;span class=&#39;nx&#39;&gt;name&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
-&lt;span class=&#39;p&#39;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+&lt;span class=&quot;c1&quot;&gt;// Set the `name` of the user.  When choosing a name,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// make it the best that you can think of.  We don&amp;#39;t&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// need anymore Users running around named &amp;quot;Benedict&amp;quot;,&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// &amp;quot;Ackbar&amp;quot; or &amp;quot;The 12th Doctor&amp;quot;.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Get the `name` of the user&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</description>
 				<pubDate>Mon, 03 Feb 2014 00:00:00 -0600</pubDate>
 				<link>/development/2014/02/03/docco-annotated-source-code.html</link>
 				<guid isPermaLink="true">/development/2014/02/03/docco-annotated-source-code.html</guid>
@@ -270,51 +281,59 @@ $(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&
 		
 			<item>
 				<title>Chrome Developer Tool -- Pause On Uncaught Exceptions</title>
-				<description>&lt;p&gt;Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable &lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
+				<description>&lt;p&gt;Ever get an vague error in the browser, but don’t quite know how to track down the culprit? A very quick way is to enable
+&lt;code&gt;Pause execution on uncaught exceptions&lt;/code&gt; in Chrome Developer Tools.&lt;/p&gt;
 
-&lt;p&gt;Sources Tab -&amp;gt; Click the hexagon/pause symbol till it turns purple. The next time an exception is thrown but not caught, a breakpoint is automatically created in Developer tools.&lt;/p&gt;
+&lt;p&gt;Sources Tab -&amp;gt; Click the hexagon/pause symbol till it turns purple. The next time an exception is thrown but not caught,
+a breakpoint is automatically created in Developer tools.&lt;/p&gt;
 
-&lt;h3 id=&quot;execution_pause_choices&quot;&gt;Execution Pause Choices&lt;/h3&gt;
+&lt;h3 id=&quot;execution-pause-choices&quot;&gt;Execution Pause Choices&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;NO PAUSE&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/no-pause.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NO PAUSE&lt;/strong&gt;  &lt;img src=&quot;/assets/img/debugging/no-pause.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Default choice. No pause in execution occurs for any exceptions.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;PAUSE ON ALL EXCEPTIONS&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/all-exceptions.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you have to manually continue execution on exceptions you don’t care about.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;PAUSE ON UNCAUGHT EXCEPTIONS&lt;/strong&gt; &lt;img src=&quot;/assets/img/debugging/uncaught-only.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PAUSE ON ALL EXCEPTIONS&lt;/strong&gt;  &lt;img src=&quot;/assets/img/debugging/all-exceptions.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Execution is paused for all exceptions, regardless of whether they have been caught. You usually don’t need to use, since you
+have to manually continue execution on exceptions you don’t care about.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;PAUSE ON UNCAUGHT EXCEPTIONS&lt;/strong&gt;  &lt;img src=&quot;/assets/img/debugging/uncaught-only.png&quot; alt=&quot;Do not pause&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Execution is only paused if an exception has been thrown but no code has been written to catch it. This is our golden boy.&lt;/p&gt;
 
-&lt;h3 id=&quot;the_golden_boy&quot;&gt;The golden boy&lt;/h3&gt;
+&lt;h3 id=&quot;the-golden-boy&quot;&gt;The golden boy&lt;/h3&gt;
 
 &lt;p&gt;When the pause happens, you have all of the tools at your disposal that would be there for an intentional breakpoint.&lt;/p&gt;
 
 &lt;p&gt;Three of the most valuable at this moment are:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Scope Variables&lt;/strong&gt; - inspect all objects and primitives within the current scope (Local, Closure, Global)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Scope Variables&lt;/strong&gt; - inspect all objects and primitives within the current scope (Local, Closure, Global)&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/debugging/scope-variables.png&quot; alt=&quot;Scope Variables&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Console&lt;/strong&gt; - You have access to all the scope variables, so you can interact with them in the console tab.&lt;/p&gt;
-&lt;/li&gt;
-
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Call Stack&lt;/strong&gt; - You can walk backward through the call stack to find the original offending method call.&lt;/p&gt;
-&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Console&lt;/strong&gt; - You have access to all the scope variables, so you can interact with them in the console tab.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Call Stack&lt;/strong&gt; - You can walk backward through the call stack to find the original offending method call.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/debugging/call-stack.png&quot; alt=&quot;Call Stack&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
 
-&lt;p&gt;Next time you get a vague exception thrown, turn on the Pause feature in Chrome. It’s a powerful way to inspect the state of your code at the instant before the exception is thrown.&lt;/p&gt;</description>
+&lt;p&gt;Next time you get a vague exception thrown, turn on the Pause feature in Chrome. It’s a powerful way to inspect the state of your code at the instant before the exception is thrown.&lt;/p&gt;
+
+</description>
 				<pubDate>Mon, 27 Jan 2014 00:00:00 -0600</pubDate>
 				<link>/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</link>
 				<guid isPermaLink="true">/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html</guid>
@@ -332,36 +351,33 @@ $(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&
 
 &lt;p&gt;If a person organized their dresser by outfit, they would be following a modular approach. The major benefits to this approach are that related files are near each other, and you can get a sense of what a project does just by looking at the file structure.&lt;/p&gt;
 
-&lt;h2 id=&quot;googles_hybrid&quot;&gt;Google’s Hybrid&lt;/h2&gt;
+&lt;h2 id=&quot;googles-hybrid&quot;&gt;Google’s Hybrid&lt;/h2&gt;
 
 &lt;p&gt;Google’s internal Angular projects delineate two different categories of files, and the organization is different for each.&lt;/p&gt;
 
-&lt;h3 id=&quot;1_potentially_reusable_components&quot;&gt;1. (Potentially) Reusable Components&lt;/h3&gt;
+&lt;h3 id=&quot;potentially-reusable-components&quot;&gt;1. (Potentially) Reusable Components&lt;/h3&gt;
 
 &lt;p&gt;There are certain Angular classes that are good candidates be reused, both within the project and potentially in others. These include:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Filters (used to format data, filter collections, etc)&lt;/li&gt;
-
-&lt;li&gt;Directives (reusable DOM components and behavior)&lt;/li&gt;
-
-&lt;li&gt;Constants&lt;/li&gt;
-
-&lt;li&gt;Services (singletons containing things like ajax services)&lt;/li&gt;
+  &lt;li&gt;Filters (used to format data, filter collections, etc)&lt;/li&gt;
+  &lt;li&gt;Directives (reusable DOM components and behavior)&lt;/li&gt;
+  &lt;li&gt;Constants&lt;/li&gt;
+  &lt;li&gt;Services (singletons containing things like ajax services)&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Each of these is organized within their respective file-type folders (sock drawers).&lt;/p&gt;
 
-&lt;h3 id=&quot;2_project_modules&quot;&gt;2. Project Modules&lt;/h3&gt;
+&lt;h3 id=&quot;project-modules&quot;&gt;2. Project Modules&lt;/h3&gt;
 
 &lt;p&gt;Organizing by modules allows related files to be placed near each other, regardless of file type. Combinations of views and their corresponding controllers are stored in each module folder.&lt;/p&gt;
 
-&lt;h3 id=&quot;example_structure_using_the_hybrid_approach&quot;&gt;Example Structure Using The Hybrid Approach&lt;/h3&gt;
+&lt;h3 id=&quot;example-structure-using-the-hybrid-approach&quot;&gt;Example Structure Using The Hybrid Approach&lt;/h3&gt;
 
 &lt;p&gt;This is a very simple example to illustrate the hybrid approach.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;// Reusable components (potentially across projects!)
-Reusable/ (name it whatever you&amp;#39;d like)
+Reusable/ (name it whatever you&#39;d like)
 	Filters/
 		CurrencyFilters.js
 		CollectionFilters.js
@@ -388,17 +404,20 @@ Modules/
 		viewProfile.html
 	EditProfile/
 		EditProfileController.js
-		editProfile.html&lt;/code&gt;&lt;/pre&gt;
+		editProfile.html
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;I think this is a compelling way to organize the codebase, regardless of the project’s dominant framework.&lt;/p&gt;
 
-&lt;h2 id=&quot;further_study&quot;&gt;Further Study&lt;/h2&gt;
+&lt;h2 id=&quot;further-study&quot;&gt;Further Study&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://www.confreaks.com/videos/759-rubymidwest2011-keynote-architecture-the-lost-years&quot;&gt;Architecture, The Lost Years&lt;/a&gt; – Uncle Bob Martin&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript&quot;&gt;Code Organization In Large AngularJS and JavaScript Applications&lt;/a&gt; – Cliff Meyers&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&quot;http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript&quot;&gt;Code Organization In Large AngularJS and JavaScript Applications&lt;/a&gt; – Cliff Meyers&lt;/p&gt;
+
+</description>
 				<pubDate>Wed, 22 Jan 2014 00:00:00 -0600</pubDate>
 				<link>/angularjs/javascript/2014/01/22/angular-organization.html</link>
 				<guid isPermaLink="true">/angularjs/javascript/2014/01/22/angular-organization.html</guid>
@@ -411,16 +430,13 @@ Modules/
 &lt;p&gt;The basic process is:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Select layers&lt;/li&gt;
-
-&lt;li&gt;Duplicate layers into a new document&lt;/li&gt;
-
-&lt;li&gt;Trim away the extra canvas area&lt;/li&gt;
-
-&lt;li&gt;Save the image&lt;/li&gt;
+  &lt;li&gt;Select layers&lt;/li&gt;
+  &lt;li&gt;Duplicate layers into a new document&lt;/li&gt;
+  &lt;li&gt;Trim away the extra canvas area&lt;/li&gt;
+  &lt;li&gt;Save the image&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;select_layers&quot;&gt;Select Layers&lt;/h2&gt;
+&lt;h2 id=&quot;select-layers&quot;&gt;Select Layers&lt;/h2&gt;
 
 &lt;p&gt;First, you will need to find the layers that make up your needed image. It might be only one layer, or it could be 20. The process will be the same.&lt;/p&gt;
 
@@ -432,55 +448,47 @@ Modules/
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/highlight-layers.png&quot; alt=&quot;Highlight layers&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;duplicate_layers_into_a_new_document&quot;&gt;Duplicate Layers Into a New Document&lt;/h2&gt;
+&lt;h2 id=&quot;duplicate-layers-into-a-new-document&quot;&gt;Duplicate Layers Into a New Document&lt;/h2&gt;
 
 &lt;p&gt;Once you have all your layers selected, you will duplicate the layers into a new document.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/layers-menu.png&quot; alt=&quot;Layers Menu&quot; /&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Layers Palette Menu -&amp;gt; Duplicate Layer…&lt;/strong&gt;&lt;/li&gt;
-
-&lt;li&gt;Choose &lt;strong&gt;Document: New&lt;/strong&gt;&lt;/li&gt;
-
-&lt;li&gt;Click &lt;strong&gt;OK&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Layers Palette Menu -&amp;gt; Duplicate Layer…&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Choose &lt;strong&gt;Document: New&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;OK&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/cutting-assets/duplicate.png&quot; alt=&quot;Duplicate Layers&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;trim_away_the_extra_canvas_area&quot;&gt;Trim Away The Extra Canvas Area&lt;/h2&gt;
-
+&lt;h2 id=&quot;trim-away-the-extra-canvas-area&quot;&gt;Trim Away The Extra Canvas Area&lt;/h2&gt;
 &lt;p&gt;All the layers have now been duplicated into a new document, but the size the canvas is the same as the old document. To fix this, trim away the excess area.&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;In the main menu bar, choose &lt;strong&gt;Image -&amp;gt; Trim…&lt;/strong&gt;&lt;/li&gt;
-
-&lt;li&gt;Choose one of the options in &lt;strong&gt;Based On&lt;/strong&gt;. &lt;strong&gt;Top Left Pixel Color&lt;/strong&gt; is sufficient most of the time.&lt;/li&gt;
-
-&lt;li&gt;The canvas size should be trimmed down to only the layers making up the image.&lt;/li&gt;
+  &lt;li&gt;In the main menu bar, choose &lt;strong&gt;Image -&amp;gt; Trim…&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Choose one of the options in &lt;strong&gt;Based On&lt;/strong&gt;.  &lt;strong&gt;Top Left Pixel Color&lt;/strong&gt; is sufficient most of the time.&lt;/li&gt;
+  &lt;li&gt;The canvas size should be trimmed down to only the layers making up the image.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;If too much has been trimmed away, undo (&lt;strong&gt;⌥⌘Z&lt;/strong&gt;) and Trim again with a different choice in the &lt;strong&gt;Based On&lt;/strong&gt; section. If not enough has been trimmed, do an additional Trim with a different choice.&lt;/p&gt;
 
-&lt;h2 id=&quot;save_the_image&quot;&gt;Save The Image&lt;/h2&gt;
+&lt;h2 id=&quot;save-the-image&quot;&gt;Save The Image&lt;/h2&gt;
 
 &lt;p&gt;Once you’re happy with your choice, it’s time to save the image.&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;File -&amp;gt; Save For Web&lt;/strong&gt; &lt;strong&gt;(⌥⇧⌘S)&lt;/strong&gt;.&lt;/li&gt;
-
-&lt;li&gt;Choose image type (.png, .jpg, etc).&lt;/li&gt;
-
-&lt;li&gt;Use &lt;strong&gt;Quality: Bicubic Sharper&lt;/strong&gt; if shrinking the image from a higher resolution.&lt;/li&gt;
-
-&lt;li&gt;Click &lt;strong&gt;Save…&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;File -&amp;gt; Save For Web&lt;/strong&gt; &lt;strong&gt;(⌥⇧⌘S)&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Choose image type (.png, .jpg, etc).&lt;/li&gt;
+  &lt;li&gt;Use &lt;strong&gt;Quality: Bicubic Sharper&lt;/strong&gt; if shrinking the image from a higher resolution.&lt;/li&gt;
+  &lt;li&gt;Click &lt;strong&gt;Save…&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-
 &lt;p&gt;This is a simple way to cut out assets when you don’t need to slice up images within a layer. Photoshop is a complicated program with lots of ways to do the same thing – but as front-end developers, we only need to know a snippet of the tool to get what we need from a PSD. I hope this helps get you get what you need faster.&lt;/p&gt;
 
-&lt;p&gt;Big thanks to &lt;a href=&quot;https://twitter.com/Bishop81&quot;&gt;Chris Morris&lt;/a&gt; for teaching me this slick method.&lt;/p&gt;</description>
+&lt;p&gt;Big thanks to &lt;a href=&quot;https://twitter.com/Bishop81&quot;&gt;Chris Morris&lt;/a&gt; for teaching me this slick method.&lt;/p&gt;
+</description>
 				<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate>
 				<link>/development/2014/01/21/cutting-assets.html</link>
 				<guid isPermaLink="true">/development/2014/01/21/cutting-assets.html</guid>
