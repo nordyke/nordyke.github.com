@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Create Backbone-style Annotated Source Code</title>
+<title>Aaron Nordyke</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -156,130 +156,85 @@
 		</div>
 
 		<div class="col-sm-9 col-sm-offset-3">
-			<article>
-	<div class="page-header">
-	  <h1>Create Backbone-style Annotated Source Code </h1>
-	</div>
+			<div class="page-header">
+  <h1>Aaron Nordyke </h1>
+</div>
 
-	<div class="col-sm-10">
-	 <span class="post-date">
-	   
-	   February
-	   3rd,
-	     
-	   2014
-	 </span>
-	  <div class="article_body">
-	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
 
-<h3 id="examples">Examples</h3>
 
-<ul>
-<li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+        <article class="home">
 
-<li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
+            <span class="post-date">
+                
+                January
+                9th,
+                
+                2013
+            </span>
 
-<li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+            <h2>
+                <a href="/css/2013/01/09/z-index.html">Base z-index using SASS</a>
+            </h2>
+
+            <div>
+                
+                    
+                        <p>I’m developing an application for a client in the form of overlays on top of their existing content. Today, I was informed that our z-indexes are all too low. The client’s site has elements that can go all the way up to 3000, and our elements were definitely below that. They recommended we use a minimum of 4000 to be safe.</p>
+                    
+                
+            </div>
+
+        </article>
+
+
+        <article class="home">
+
+            <span class="post-date">
+                
+                December
+                10th,
+                
+                2012
+            </span>
+
+            <h2>
+                <a href="/testing/2012/12/10/unit-tests.html">Unit Tests Are Soothing</a>
+            </h2>
+
+            <div>
+                
+                    
+                        <p><em>It’s soothing to write a unit test.</em></p>
+                    
+                
+            </div>
+
+        </article>
+
+<hr/>
+
+<ul class="pager">
+
+  
+    <li class="previous">
+      
+        <a href="/">&larr; Newer</a>
+      
+    </li>
+  
+
+  <li>
+          <span class="page_number">Page: 2 of 2</span>
+  </li>
+
+  
+    <li class="next disabled">
+            <a>Older &rarr;</a>
+    </li>
+  
+
 </ul>
 
-<p>The incredibly simple installation and usage instructions are on the <a href="http://jashkenas.github.io/docco/">Docco</a> project site.</p>
-
-<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations. It also supports basic Markdown syntax. Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
-<div class='highlight'><pre><code class='js'><span class='c1'>// User</span>
-<span class='c1'>// ---------</span>
-
-<span class='c1'>// User is a contrived and ridiculously stupid constructor to create a user,</span>
-<span class='c1'>// and its sole purpose is to give a simple demonstration</span>
-<span class='c1'>// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
-<span class='c1'>// the code, friendship over.</span>
-
-<span class='c1'>//   (c) Aaron Nordyke 2014</span>
-
-<span class='c1'>// ------</span>
-
-<span class='c1'>// User Constructor.  `name` is the name of the User.</span>
-<span class='c1'>//</span>
-<span class='c1'>// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
-<span class='kd'>var</span> <span class='nx'>User</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-
-    <span class='c1'>// `User.name` is set to &quot;Dave&quot; by default</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span> <span class='o'>||</span> <span class='s1'>&#39;Dave&#39;</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Set the `name` of the user.  When choosing a name,</span>
-<span class='c1'>// make it the best that you can think of.  We don&#39;t</span>
-<span class='c1'>// need anymore Users running around named &quot;Benedict&quot;,</span>
-<span class='c1'>// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>setName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Get the `name` of the user</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>getName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
-    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-</code></pre></div>
-	  </div>
-
-		
-		<ul class="tag_box list-unstyled list-inline">
-		  <li><i class="fa fa-folder-open"></i></li>
-		  
-		  
-			
-				<li><a href="/categories.html#development-ref">
-					development <span>(8)</span>
-					
-				</a></li>
-			
-		  
-		</ul>
-		
-
-		
-		<ul class="list-inline">
-		  <li><i class="fa fa-tags"></i></li>
-		  
-		  
-			
-				<li>
-					<a href="/tags.html#documentation-ref">
-					documentation <span>(1)</span>
-					,
-					</a>
-				</li>
-			
-				<li>
-					<a href="/tags.html#docco-ref">
-					docco <span>(1)</span>
-					
-					</a>
-				</li>
-			
-		  
-		  
-		</ul>
-		
-
-		<hr>
-
-		<ul class="pager">
-		  
-		  <li class="previous"><a href="/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html" title="Chrome Developer Tool -- Pause On Uncaught Exceptions">&larr; Previous</a></li>
-		  
-		  
-		  <li class="next"><a href="/development/2014/04/23/feature-icing.html" title="Go All-Or-Nothing on Feature Icing">Next &rarr;</a></li>
-		  
-		</ul>
-
-		<hr>
-	</div>
-
-	<div class="col-sm-2 sidebar-2">
-
-	</div>
-</article>
-<div class="clearfix"></div>
 
 
 

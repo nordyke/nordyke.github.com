@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Create Backbone-style Annotated Source Code</title>
+<title>User Modernizr for Buttery-smooth CSS3 Animations</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -158,67 +158,79 @@
 		<div class="col-sm-9 col-sm-offset-3">
 			<article>
 	<div class="page-header">
-	  <h1>Create Backbone-style Annotated Source Code </h1>
+	  <h1>User Modernizr for Buttery-smooth CSS3 Animations </h1>
 	</div>
 
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   February
-	   3rd,
-	     
+	   April
+	   25th,
+	   
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
+	  <p>Animations in CSS3 are awesome, because the GPU is utilized. Unfortunately, not every browser supports them. Using <a href="http://modernizr.com/">Modernizr</a>, you can target the browsers that support the CSS3 animations, and do something simpler for those that cannot.</p>
 
-<h3 id="examples">Examples</h3>
+<p>Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it. JavaScript is one way to test for feature presence.</p>
 
-<ul>
-<li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+<pre><code>if(Modernizr.&lt;feature&gt;){
+…
+}</code></pre>
 
-<li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
+<p>Modernizr also automatically add classes to the <code>html</code> tag for each feature the browser supports.</p>
 
-<li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
-</ul>
+<pre><code>&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot; id=&quot;modernizrcom&quot; class=&quot;…csstransforms csstransitions…&quot;&gt;</code></pre>
 
-<p>The incredibly simple installation and usage instructions are on the <a href="http://jashkenas.github.io/docco/">Docco</a> project site.</p>
+<p>This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them. Here’s an example from a current project, where we need a panel to slide in from the left. If the browser supports <code>csstransforms</code> and <code>csstransitions</code>, the panel slides in. If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.</p>
 
-<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations. It also supports basic Markdown syntax. Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
-<div class='highlight'><pre><code class='js'><span class='c1'>// User</span>
-<span class='c1'>// ---------</span>
+<pre><code>//_directions.scss, using Compass mixins
 
-<span class='c1'>// User is a contrived and ridiculously stupid constructor to create a user,</span>
-<span class='c1'>// and its sole purpose is to give a simple demonstration</span>
-<span class='c1'>// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
-<span class='c1'>// the code, friendship over.</span>
+$panel-width: 430px;
 
-<span class='c1'>//   (c) Aaron Nordyke 2014</span>
+// Fallback for Browsers that don&#39;t support CCS3 transitions/transforms
+.directions-panel {
+	// Place panel outside the viewport, on the left side.
+	left: (0 - $panel-width);
+	top: 150px;
+	position: fixed;
+}
+.directions-panel--open{
+	// Open panel sits just inside the viewport, on the left side
+	left: 0;
+}
 
-<span class='c1'>// ------</span>
+// Animation for browsers that support CSS3 transitions/transforms.
+.csstransforms3d.csstransitions {
 
-<span class='c1'>// User Constructor.  `name` is the name of the User.</span>
-<span class='c1'>//</span>
-<span class='c1'>// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
-<span class='kd'>var</span> <span class='nx'>User</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
+	// Default state.
+	.directions-panel {
+		// Override the fallback positioning
+		left: 0;
+		// If a transform happens on the element, have it occur over
+		// the course of 500ms.
+		@include transition(transform 500ms ease);
+		// Default state is just to the left of the viewport
+		@include transform(translate3d(-$panel-width,0,0));
+	}
 
-    <span class='c1'>// `User.name` is set to &quot;Dave&quot; by default</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span> <span class='o'>||</span> <span class='s1'>&#39;Dave&#39;</span><span class='p'>;</span>
-<span class='p'>};</span>
+	// Open state
+	.directions-panel--open {
+		// Panel should be inside the viewport, on the left side.
+		// Because of the transition rule above, an animation will occur over
+		// 500ms.
+		@include transform(translate3d(0,0,0));
+	}
+}</code></pre>
 
-<span class='c1'>// Set the `name` of the user.  When choosing a name,</span>
-<span class='c1'>// make it the best that you can think of.  We don&#39;t</span>
-<span class='c1'>// need anymore Users running around named &quot;Benedict&quot;,</span>
-<span class='c1'>// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>setName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
+<p>Activate the animation by toggling the class</p>
 
-<span class='c1'>// Get the `name` of the user</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>getName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
-    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-</code></pre></div>
+<pre><code>//directions.js
+
+//Active the animation by toggling the class
+$(&#39;.directions-panel&#39;).addClass(&#39;directions-panel--open&#39;);</code></pre>
+
+<p>Pure, buttery CSS3 animations. No jQuery <code>.animate</code>.</p>
 	  </div>
 
 		
@@ -243,15 +255,22 @@
 		  
 			
 				<li>
-					<a href="/tags.html#documentation-ref">
-					documentation <span>(1)</span>
+					<a href="/tags.html#modernizr-ref">
+					modernizr <span>(1)</span>
 					,
 					</a>
 				</li>
 			
 				<li>
-					<a href="/tags.html#docco-ref">
-					docco <span>(1)</span>
+					<a href="/tags.html#css3-ref">
+					css3 <span>(1)</span>
+					,
+					</a>
+				</li>
+			
+				<li>
+					<a href="/tags.html#css-ref">
+					css <span>(3)</span>
 					
 					</a>
 				</li>
@@ -265,10 +284,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html" title="Chrome Developer Tool -- Pause On Uncaught Exceptions">&larr; Previous</a></li>
+		  <li class="previous"><a href="/development/2014/04/24/dot-in-ng-model.html" title="Always Use a Dot In ng-model">&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="/development/2014/04/23/feature-icing.html" title="Go All-Or-Nothing on Feature Icing">Next &rarr;</a></li>
+		  <li class="next"><a href="/development/2014/04/30/models-in-angular.html" title="Models in Angular">Next &rarr;</a></li>
 		  
 		</ul>
 

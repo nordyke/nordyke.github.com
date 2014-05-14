@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Create Backbone-style Annotated Source Code</title>
+<title>Models in Angular</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -158,67 +158,79 @@
 		<div class="col-sm-9 col-sm-offset-3">
 			<article>
 	<div class="page-header">
-	  <h1>Create Backbone-style Annotated Source Code </h1>
+	  <h1>Models in Angular </h1>
 	</div>
 
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   February
-	   3rd,
-	     
+	   April
+	   30th,
+	   
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
+	  <p>On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project. We wanted a best practice, and the Angular documentation wasn’t giving us any answers.</p>
 
-<h3 id="examples">Examples</h3>
+<p>We tried a pub/sub system for a while to pass information. It became useful for broadcasting events, but not as a central source of truth for the data.</p>
+
+<p>Angular is a large toolbelt with lots ways to glue data and the DOM together. However, the library is frustratingly silent about the Model (with a capital ‘M’).</p>
+
+<p>It’s tempting to make <code>$scope</code> the model. On the surface, this makes sense. Isn’t the model the source of truth that drives what’s in the view? If <code>$scope</code> does just that, doesn’t that make it the model? Emphatically, NO.</p>
+
+<p>Models need to persist data between the views and routes. <code>$scope</code> can’t do that. Its lifecycle is limited to the life of the <code>ng-controller</code>, which is usually limited to the life of a route.</p>
+
+<h1 id="solution">Solution</h1>
+
+<p>Our eventual solution was to use <a href="https://docs.angularjs.org/guide/providers">Angular factories/services</a>. They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.</p>
+
+<p>In the example below, we created a <code>reservationModel</code> singleton that is accessed amongst various controllers and directives in the application. Any updates to the properties of the <code>reservationModel</code> in one of the modules is automatically reflected in all of the others.</p>
+
+<pre><code>// reservationModel
+// The data can be in any form.  The important thing is that the data exists outside of
+// temporary modules such as controllers and directives.
+angular.module(&#39;radBlu&#39;).service(&#39;reservationModel&#39;, function(){
+	&#39;use strict&#39;;
+
+	// Subset of the data from our actual Model
+	this.locations = [];
+	this.destination = {
+		displayVal: &#39;&#39;,
+		hotelCode: &#39;&#39;,
+		hotelName: &#39;&#39;
+	};
+	this.rooms = {};
+	this.dates = {};
+
+	// Methods
+	...
+	// Interaction with server
+	...
+
+});
+
+// Search Controller, into which we inject the reservationModel
+angular.module(&#39;radBlu&#39;).controller(&#39;SearchCtrl&#39;, function($scope, reservationModel){
+	&#39;use strict&#39;;
+
+	// Glue our model to the view using $scope.  Any updates to reservationModel will
+	// now always be reflected in this Search Controller
+	$scope.reservation = reservationModel;
+});</code></pre>
+
+<p><strong>Documentation:</strong> <a href="https://docs.angularjs.org/guide/providers">Angular Providers/Factories/Services</a></p>
+
+<h1 id="next_steps_for_our_team">Next steps for our team</h1>
 
 <ul>
-<li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+<li>Create standard for organizing the Models</li>
 
-<li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
-
-<li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
+<li>Move all interface between the outside world and the Model into the Model. This includes interaction with AJAX services.</li>
 </ul>
 
-<p>The incredibly simple installation and usage instructions are on the <a href="http://jashkenas.github.io/docco/">Docco</a> project site.</p>
+<h1 id="summary">Summary</h1>
 
-<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations. It also supports basic Markdown syntax. Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
-<div class='highlight'><pre><code class='js'><span class='c1'>// User</span>
-<span class='c1'>// ---------</span>
-
-<span class='c1'>// User is a contrived and ridiculously stupid constructor to create a user,</span>
-<span class='c1'>// and its sole purpose is to give a simple demonstration</span>
-<span class='c1'>// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
-<span class='c1'>// the code, friendship over.</span>
-
-<span class='c1'>//   (c) Aaron Nordyke 2014</span>
-
-<span class='c1'>// ------</span>
-
-<span class='c1'>// User Constructor.  `name` is the name of the User.</span>
-<span class='c1'>//</span>
-<span class='c1'>// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
-<span class='kd'>var</span> <span class='nx'>User</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-
-    <span class='c1'>// `User.name` is set to &quot;Dave&quot; by default</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span> <span class='o'>||</span> <span class='s1'>&#39;Dave&#39;</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Set the `name` of the user.  When choosing a name,</span>
-<span class='c1'>// make it the best that you can think of.  We don&#39;t</span>
-<span class='c1'>// need anymore Users running around named &quot;Benedict&quot;,</span>
-<span class='c1'>// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>setName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Get the `name` of the user</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>getName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
-    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-</code></pre></div>
+<p>Use <a href="https://docs.angularjs.org/guide/providers">Angular Providers</a> to create Models, because they exist beyond the lifecycle of the controllers and directives.</p>
 	  </div>
 
 		
@@ -243,15 +255,15 @@
 		  
 			
 				<li>
-					<a href="/tags.html#documentation-ref">
-					documentation <span>(1)</span>
+					<a href="/tags.html#javascript-ref">
+					javascript <span>(7)</span>
 					,
 					</a>
 				</li>
 			
 				<li>
-					<a href="/tags.html#docco-ref">
-					docco <span>(1)</span>
+					<a href="/tags.html#angularjs-ref">
+					angularjs <span>(4)</span>
 					
 					</a>
 				</li>
@@ -265,10 +277,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html" title="Chrome Developer Tool -- Pause On Uncaught Exceptions">&larr; Previous</a></li>
+		  <li class="previous"><a href="/development/2014/04/25/modernizr-for-animations.html" title="User Modernizr for Buttery-smooth CSS3 Animations">&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="/development/2014/04/23/feature-icing.html" title="Go All-Or-Nothing on Feature Icing">Next &rarr;</a></li>
+		  <li class="next"><a href="/development/2014/05/01/angular-vs-ember.html" title="Angular vs Ember From a Fan of Both">Next &rarr;</a></li>
 		  
 		</ul>
 

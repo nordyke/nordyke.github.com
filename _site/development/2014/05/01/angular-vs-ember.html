@@ -3,7 +3,7 @@
 
 <! -- header.html -->
 <meta charset="utf-8">
-<title>Create Backbone-style Annotated Source Code</title>
+<title>Angular vs Ember From a Fan of Both</title>
 
 <meta name="author" content="Aaron Nordyke">
 
@@ -158,67 +158,21 @@
 		<div class="col-sm-9 col-sm-offset-3">
 			<article>
 	<div class="page-header">
-	  <h1>Create Backbone-style Annotated Source Code </h1>
+	  <h1>Angular vs Ember From a Fan of Both </h1>
 	</div>
 
 	<div class="col-sm-10">
 	 <span class="post-date">
 	   
-	   February
-	   3rd,
+	   May
+	   1st,
 	     
 	   2014
 	 </span>
 	  <div class="article_body">
-	  <p>Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using <a href="http://jashkenas.github.io/docco/">Docco</a>, a tool created by Backbone’s Jeremy Ashkenas.</p>
+	  <p>This is a great series of posts from a guy who’s a big contributor to Angular and now works with Ember.js at Netflix alongside one of the core team members of Ember. http://www.benlesh.com/2014/04/embular-part-1-comparing-ember-and.html (6 parts total).</p>
 
-<h3 id="examples">Examples</h3>
-
-<ul>
-<li>Backbone - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
-
-<li>Underscore - <a href="http://underscorejs.org/docs/underscore.html">http://underscorejs.org/docs/underscore.html</a></li>
-
-<li>Coffeescript - <a href="http://backbonejs.org/docs/backbone.html">http://backbonejs.org/docs/backbone.html</a></li>
-</ul>
-
-<p>The incredibly simple installation and usage instructions are on the <a href="http://jashkenas.github.io/docco/">Docco</a> project site.</p>
-
-<p>Though it can be configured otherwise, Docco looks for single-line comment style of <code>//</code> to create the annotations. It also supports basic Markdown syntax. Docco would create <a href="/docs/user-docco.html">this page</a> from the JS below.</p>
-<div class='highlight'><pre><code class='js'><span class='c1'>// User</span>
-<span class='c1'>// ---------</span>
-
-<span class='c1'>// User is a contrived and ridiculously stupid constructor to create a user,</span>
-<span class='c1'>// and its sole purpose is to give a simple demonstration</span>
-<span class='c1'>// of [Docco](http://jashkenas.github.io/docco/).  If you judge</span>
-<span class='c1'>// the code, friendship over.</span>
-
-<span class='c1'>//   (c) Aaron Nordyke 2014</span>
-
-<span class='c1'>// ------</span>
-
-<span class='c1'>// User Constructor.  `name` is the name of the User.</span>
-<span class='c1'>//</span>
-<span class='c1'>// **example:**  `var aaron = new User(&quot;Aaron&quot;)`</span>
-<span class='kd'>var</span> <span class='nx'>User</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-
-    <span class='c1'>// `User.name` is set to &quot;Dave&quot; by default</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span> <span class='o'>||</span> <span class='s1'>&#39;Dave&#39;</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Set the `name` of the user.  When choosing a name,</span>
-<span class='c1'>// make it the best that you can think of.  We don&#39;t</span>
-<span class='c1'>// need anymore Users running around named &quot;Benedict&quot;,</span>
-<span class='c1'>// &quot;Ackbar&quot; or &quot;The 12th Doctor&quot;.</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>setName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>name</span><span class='p'>){</span>
-    <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span> <span class='o'>=</span> <span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-
-<span class='c1'>// Get the `name` of the user</span>
-<span class='nx'>User</span><span class='p'>.</span><span class='nx'>prototype</span><span class='p'>.</span><span class='nx'>getName</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(){</span>
-    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>name</span><span class='p'>;</span>
-<span class='p'>};</span>
-</code></pre></div>
+<p>If you’re looking for an article to tell you which one is better, you won’t find it here.</p>
 	  </div>
 
 		
@@ -243,15 +197,22 @@
 		  
 			
 				<li>
-					<a href="/tags.html#documentation-ref">
-					documentation <span>(1)</span>
+					<a href="/tags.html#javascript-ref">
+					javascript <span>(7)</span>
 					,
 					</a>
 				</li>
 			
 				<li>
-					<a href="/tags.html#docco-ref">
-					docco <span>(1)</span>
+					<a href="/tags.html#angularjs-ref">
+					angularjs <span>(4)</span>
+					,
+					</a>
+				</li>
+			
+				<li>
+					<a href="/tags.html#emberjs-ref">
+					emberjs <span>(1)</span>
 					
 					</a>
 				</li>
@@ -265,10 +226,10 @@
 
 		<ul class="pager">
 		  
-		  <li class="previous"><a href="/javascript/debugging/2014/01/27/chrome-pause-on-uncaught-exceptions.html" title="Chrome Developer Tool -- Pause On Uncaught Exceptions">&larr; Previous</a></li>
+		  <li class="previous"><a href="/development/2014/04/30/models-in-angular.html" title="Models in Angular">&larr; Previous</a></li>
 		  
 		  
-		  <li class="next"><a href="/development/2014/04/23/feature-icing.html" title="Go All-Or-Nothing on Feature Icing">Next &rarr;</a></li>
+		  <li class="next"><a href="/development/2014/05/10/updated-bowling-kata.html" title="Bowling Kata Seed update">Next &rarr;</a></li>
 		  
 		</ul>
 

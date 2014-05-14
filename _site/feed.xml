@@ -7,6 +7,212 @@
 		<atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Bowling Kata Seed update</title>
+				<description>&lt;p&gt;I updated my &lt;a href=&quot;https://github.com/nordyke/bowling-kata-seed&quot;&gt;Bowling Kata Seed&lt;/a&gt; repo to use &lt;a href=&quot;http://karma-runner.github.io/0.12/index.html&quot;&gt;Karma&lt;/a&gt; test runner, rather than its terribly-named former self, Testacular. Instructions are in the README.&lt;/p&gt;
+
+&lt;p&gt;Bowling Kata Seed is a starter for practicing unit testing and test-driven development in JavaScript.&lt;/p&gt;
+
+&lt;p&gt;https://github.com/nordyke/bowling-kata-seed&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;I heard this little gem on the radio this morning.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;“Miss one day of practice, I notice; miss two, the critics notice; miss three, the audience notices”. &lt;em&gt;Franz Liszt, Composer and Pianist&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+				<pubDate>Sat, 10 May 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/05/10/updated-bowling-kata.html</link>
+				<guid isPermaLink="true">/development/2014/05/10/updated-bowling-kata.html</guid>
+			</item>
+		
+			<item>
+				<title>Angular vs Ember From a Fan of Both</title>
+				<description>&lt;p&gt;This is a great series of posts from a guy who’s a big contributor to Angular and now works with Ember.js at Netflix alongside one of the core team members of Ember. http://www.benlesh.com/2014/04/embular-part-1-comparing-ember-and.html (6 parts total).&lt;/p&gt;
+
+&lt;p&gt;If you’re looking for an article to tell you which one is better, you won’t find it here.&lt;/p&gt;</description>
+				<pubDate>Thu, 01 May 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/05/01/angular-vs-ember.html</link>
+				<guid isPermaLink="true">/development/2014/05/01/angular-vs-ember.html</guid>
+			</item>
+		
+			<item>
+				<title>Models in Angular</title>
+				<description>&lt;p&gt;On the project at work, we were struggling with a way to maintain data between the various controllers and directives that make up the project. We wanted a best practice, and the Angular documentation wasn’t giving us any answers.&lt;/p&gt;
+
+&lt;p&gt;We tried a pub/sub system for a while to pass information. It became useful for broadcasting events, but not as a central source of truth for the data.&lt;/p&gt;
+
+&lt;p&gt;Angular is a large toolbelt with lots ways to glue data and the DOM together. However, the library is frustratingly silent about the Model (with a capital ‘M’).&lt;/p&gt;
+
+&lt;p&gt;It’s tempting to make &lt;code&gt;$scope&lt;/code&gt; the model. On the surface, this makes sense. Isn’t the model the source of truth that drives what’s in the view? If &lt;code&gt;$scope&lt;/code&gt; does just that, doesn’t that make it the model? Emphatically, NO.&lt;/p&gt;
+
+&lt;p&gt;Models need to persist data between the views and routes. &lt;code&gt;$scope&lt;/code&gt; can’t do that. Its lifecycle is limited to the life of the &lt;code&gt;ng-controller&lt;/code&gt;, which is usually limited to the life of a route.&lt;/p&gt;
+
+&lt;h1 id=&quot;solution&quot;&gt;Solution&lt;/h1&gt;
+
+&lt;p&gt;Our eventual solution was to use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular factories/services&lt;/a&gt;. They provide a way to make object factories, singletons, and constructors – and then inject the creations into other angular modules.&lt;/p&gt;
+
+&lt;p&gt;In the example below, we created a &lt;code&gt;reservationModel&lt;/code&gt; singleton that is accessed amongst various controllers and directives in the application. Any updates to the properties of the &lt;code&gt;reservationModel&lt;/code&gt; in one of the modules is automatically reflected in all of the others.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// reservationModel
+// The data can be in any form.  The important thing is that the data exists outside of
+// temporary modules such as controllers and directives.
+angular.module(&amp;#39;radBlu&amp;#39;).service(&amp;#39;reservationModel&amp;#39;, function(){
+	&amp;#39;use strict&amp;#39;;
+
+	// Subset of the data from our actual Model
+	this.locations = [];
+	this.destination = {
+		displayVal: &amp;#39;&amp;#39;,
+		hotelCode: &amp;#39;&amp;#39;,
+		hotelName: &amp;#39;&amp;#39;
+	};
+	this.rooms = {};
+	this.dates = {};
+
+	// Methods
+	...
+	// Interaction with server
+	...
+
+});
+
+// Search Controller, into which we inject the reservationModel
+angular.module(&amp;#39;radBlu&amp;#39;).controller(&amp;#39;SearchCtrl&amp;#39;, function($scope, reservationModel){
+	&amp;#39;use strict&amp;#39;;
+
+	// Glue our model to the view using $scope.  Any updates to reservationModel will
+	// now always be reflected in this Search Controller
+	$scope.reservation = reservationModel;
+});&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Documentation:&lt;/strong&gt; &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular Providers/Factories/Services&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;next_steps_for_our_team&quot;&gt;Next steps for our team&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create standard for organizing the Models&lt;/li&gt;
+
+&lt;li&gt;Move all interface between the outside world and the Model into the Model. This includes interaction with AJAX services.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;/h1&gt;
+
+&lt;p&gt;Use &lt;a href=&quot;https://docs.angularjs.org/guide/providers&quot;&gt;Angular Providers&lt;/a&gt; to create Models, because they exist beyond the lifecycle of the controllers and directives.&lt;/p&gt;</description>
+				<pubDate>Wed, 30 Apr 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/04/30/models-in-angular.html</link>
+				<guid isPermaLink="true">/development/2014/04/30/models-in-angular.html</guid>
+			</item>
+		
+			<item>
+				<title>User Modernizr for Buttery-smooth CSS3 Animations</title>
+				<description>&lt;p&gt;Animations in CSS3 are awesome, because the GPU is utilized. Unfortunately, not every browser supports them. Using &lt;a href=&quot;http://modernizr.com/&quot;&gt;Modernizr&lt;/a&gt;, you can target the browsers that support the CSS3 animations, and do something simpler for those that cannot.&lt;/p&gt;
+
+&lt;p&gt;Modernizr is a library whose main job is to detect whether the current browser has specific feature functionality built into it. JavaScript is one way to test for feature presence.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if(Modernizr.&amp;lt;feature&amp;gt;){
+…
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Modernizr also automatically add classes to the &lt;code&gt;html&lt;/code&gt; tag for each feature the browser supports.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;html lang=&amp;quot;en&amp;quot; dir=&amp;quot;ltr&amp;quot; id=&amp;quot;modernizrcom&amp;quot; class=&amp;quot;…csstransforms csstransitions…&amp;quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This allows us to use CSS3 to create our animations and fall back in the devices that can’t do them. Here’s an example from a current project, where we need a panel to slide in from the left. If the browser supports &lt;code&gt;csstransforms&lt;/code&gt; and &lt;code&gt;csstransitions&lt;/code&gt;, the panel slides in. If the animation features are not supported, the fallback is for the panel to appear on the left, sans animation.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//_directions.scss, using Compass mixins
+
+$panel-width: 430px;
+
+// Fallback for Browsers that don&amp;#39;t support CCS3 transitions/transforms
+.directions-panel {
+	// Place panel outside the viewport, on the left side.
+	left: (0 - $panel-width);
+	top: 150px;
+	position: fixed;
+}
+.directions-panel--open{
+	// Open panel sits just inside the viewport, on the left side
+	left: 0;
+}
+
+// Animation for browsers that support CSS3 transitions/transforms.
+.csstransforms3d.csstransitions {
+
+	// Default state.
+	.directions-panel {
+		// Override the fallback positioning
+		left: 0;
+		// If a transform happens on the element, have it occur over
+		// the course of 500ms.
+		@include transition(transform 500ms ease);
+		// Default state is just to the left of the viewport
+		@include transform(translate3d(-$panel-width,0,0));
+	}
+
+	// Open state
+	.directions-panel--open {
+		// Panel should be inside the viewport, on the left side.
+		// Because of the transition rule above, an animation will occur over
+		// 500ms.
+		@include transform(translate3d(0,0,0));
+	}
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Activate the animation by toggling the class&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;//directions.js
+
+//Active the animation by toggling the class
+$(&amp;#39;.directions-panel&amp;#39;).addClass(&amp;#39;directions-panel--open&amp;#39;);&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Pure, buttery CSS3 animations. No jQuery &lt;code&gt;.animate&lt;/code&gt;.&lt;/p&gt;</description>
+				<pubDate>Fri, 25 Apr 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/04/25/modernizr-for-animations.html</link>
+				<guid isPermaLink="true">/development/2014/04/25/modernizr-for-animations.html</guid>
+			</item>
+		
+			<item>
+				<title>Always Use a Dot In ng-model</title>
+				<description>&lt;p&gt;Always have a &lt;code&gt;.&lt;/code&gt; in your &lt;code&gt;ng-model&lt;/code&gt;. This means that Angular is updating an Object property, rather than the entire Object reference or primitive.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;”..if you use ng-model there has to be a dot somewhere. If you don’t have a dot, you’re doing it wrong..”.&lt;/em&gt; &lt;strong&gt;Miško Hevery, Angular Core Team&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bad&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;dogname&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Good&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;text&amp;quot; ng-model=&amp;quot;dog.name&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sometimes in Angular, because of the way JS works, when you don’t use a dot, &lt;code&gt;dogname&lt;/code&gt; becames a new &lt;em&gt;child&lt;/em&gt; value that is a shadow of the original &lt;em&gt;parent&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt;. Now, whenever &lt;em&gt;child&lt;/em&gt; &lt;code&gt;dogname&lt;/code&gt; gets updated, &lt;em&gt;parent&lt;/em&gt; does not. This occurs mostly in nested &lt;code&gt;$scope&lt;/code&gt; from &lt;code&gt;Controllers&lt;/code&gt; and &lt;code&gt;Directives&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Use the &lt;code&gt;.&lt;/code&gt;, and you avoid the problem.&lt;/p&gt;</description>
+				<pubDate>Thu, 24 Apr 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/04/24/dot-in-ng-model.html</link>
+				<guid isPermaLink="true">/development/2014/04/24/dot-in-ng-model.html</guid>
+			</item>
+		
+			<item>
+				<title>Go All-Or-Nothing on Feature Icing</title>
+				<description>&lt;p&gt;There are two types of front-end features of any web application. First, there are those that are necessary. For these, you need to put in the extra work for them to function across supported devices and browsers.&lt;/p&gt;
+
+&lt;p&gt;Second, there are those that are icing on the cake. They add to the experience, but they are not requisite for the app to function.&lt;/p&gt;
+
+&lt;p&gt;When you’re dealing with feature icing, go all-or-nothing. If the device supports the functionality necessary to make the feature some buttery awesomess, then use it. If the device doesn’t support the functionality necessary for greatness, don’t create a lowest common denominator solution to satisfy it. Forget the feature.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Rounded corners&lt;/li&gt;
+
+&lt;li&gt;Animations (CSS3 vs jQuery)&lt;/li&gt;
+&lt;/ul&gt;</description>
+				<pubDate>Wed, 23 Apr 2014 00:00:00 -0500</pubDate>
+				<link>/development/2014/04/23/feature-icing.html</link>
+				<guid isPermaLink="true">/development/2014/04/23/feature-icing.html</guid>
+			</item>
+		
+			<item>
 				<title>Create Backbone-style Annotated Source Code</title>
 				<description>&lt;p&gt;Backbone, Underscore and CoffeeScript have awesome annotated source code. And it’s really easy to create in your own project using &lt;a href=&quot;http://jashkenas.github.io/docco/&quot;&gt;Docco&lt;/a&gt;, a tool created by Backbone’s Jeremy Ashkenas.&lt;/p&gt;
 
@@ -278,50 +484,6 @@ Modules/
 				<pubDate>Tue, 21 Jan 2014 00:00:00 -0600</pubDate>
 				<link>/development/2014/01/21/cutting-assets.html</link>
 				<guid isPermaLink="true">/development/2014/01/21/cutting-assets.html</guid>
-			</item>
-		
-			<item>
-				<title>Base z-index using SASS</title>
-				<description>&lt;p&gt;I’m developing an application for a client in the form of overlays on top of their existing content. Today, I was informed that our z-indexes are all too low. The client’s site has elements that can go all the way up to 3000, and our elements were definitely below that. They recommended we use a minimum of 4000 to be safe.&lt;/p&gt;
-
-&lt;p&gt;The most straightforward solution would be to find every z-index and add 4000 to it.&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;css&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;m&#39;&gt;50&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;becomes&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;css&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;k&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;m&#39;&gt;4050&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;But what happens if we we get a new requirement that our minimum should be 5000? Do you really want to have to find all the z-indexes again? With SASS, this is a non-issue.&lt;/p&gt;
-
-&lt;p&gt;First, I created a new SASS variable to note my base z-index.&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;scss&#39;&gt;&lt;span class=&#39;nv&#39;&gt;$base-z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;mi&#39;&gt;4000&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Next, I added the variable to every z-index instance.&lt;/p&gt;
-&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;scss&#39;&gt;&lt;span class=&#39;nc&#39;&gt;.element&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;{&lt;/span&gt; &lt;span class=&#39;na&#39;&gt;z-index&lt;/span&gt;&lt;span class=&#39;o&#39;&gt;:&lt;/span&gt; &lt;span class=&#39;nv&#39;&gt;$base-z-index&lt;/span&gt; &lt;span class=&#39;o&#39;&gt;+&lt;/span&gt; &lt;span class=&#39;mi&#39;&gt;50&lt;/span&gt;&lt;span class=&#39;p&#39;&gt;;&lt;/span&gt; &lt;span class=&#39;p&#39;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This also takes advantage of SASS’ built-in math operations.&lt;/p&gt;
-
-&lt;p&gt;Now, if the requirement changes, I only have to make one change to the stylesheets.&lt;/p&gt;</description>
-				<pubDate>Wed, 09 Jan 2013 00:00:00 -0600</pubDate>
-				<link>/css/2013/01/09/z-index.html</link>
-				<guid isPermaLink="true">/css/2013/01/09/z-index.html</guid>
-			</item>
-		
-			<item>
-				<title>Unit Tests Are Soothing</title>
-				<description>&lt;p&gt;&lt;em&gt;It’s soothing to write a unit test.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;It’s a breadcrumb to lead you back.&lt;/p&gt;
-
-&lt;p&gt;It’s a seat belt for when you crash.&lt;/p&gt;
-
-&lt;p&gt;It’s the opposite of free climbing.&lt;/p&gt;
-
-&lt;p&gt;Sometimes it feels like extra red tape. When you change your source code, the tests need to be adjusted. There are now two code bases to maintain. You might expose too much in an effort to have code coverage.&lt;/p&gt;
-
-&lt;p&gt;Come in from the wild, hacker. Unit tests are worth the red tape.&lt;/p&gt;</description>
-				<pubDate>Mon, 10 Dec 2012 00:00:00 -0600</pubDate>
-				<link>/testing/2012/12/10/unit-tests.html</link>
-				<guid isPermaLink="true">/testing/2012/12/10/unit-tests.html</guid>
 			</item>
 		
 	</channel>
